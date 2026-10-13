@@ -8,6 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  // Apply theme before paint to avoid flash
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
 
@@ -20,7 +30,13 @@
     <a href="#achievements">Achievements</a>
     <a href="#contact" class="btn small">Get in touch</a>
   </nav>
-  <button id="burger" aria-label="Toggle menu">&#9776;</button>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+      <span class="icon-moon" aria-hidden="true">&#9790;</span>
+      <span class="icon-sun" aria-hidden="true">&#9788;</span>
+    </button>
+    <button id="burger" aria-label="Toggle menu">&#9776;</button>
+  </div>
 </header>
 
 <main>
@@ -117,32 +133,48 @@
   <h2>Achievements & Certifications</h2>
   <div class="card lc" id="lc-card">
     <div class="row"><h3>LeetCode stats</h3><a class="muted" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">@Anant_goyal2907</a></div>
-    <div class="lc-body">
-      <div class="lc-total"><strong id="lc-total">200+</strong><span>problems solved</span></div>
-      <div class="lc-bars" id="lc-bars" hidden>
-        <div class="lc-row easy"><span>Easy</span><div class="bar"><i id="lc-easy-bar"></i></div><b id="lc-easy">0</b></div>
-        <div class="lc-row medium"><span>Medium</span><div class="bar"><i id="lc-medium-bar"></i></div><b id="lc-medium">0</b></div>
-        <div class="lc-row hard"><span>Hard</span><div class="bar"><i id="lc-hard-bar"></i></div><b id="lc-hard">0</b></div>
+
+    <!-- Skeleton shown while loading -->
+    <div class="lc-skeleton" id="lc-skeleton" aria-hidden="true">
+      <div class="lc-skel-body">
+        <div class="skel skel-total"></div>
+        <div class="skel-bars">
+          <div class="skel skel-row"></div>
+          <div class="skel skel-row"></div>
+          <div class="skel skel-row"></div>
+        </div>
       </div>
+      <div class="skel skel-heatmap"></div>
+      <div class="skel skel-note"></div>
     </div>
 
-    <!-- Submission heatmap (GitHub-style calendar) -->
-    <div class="lc-heatmap-wrap" id="lc-heatmap-wrap" hidden>
-      <div class="lc-heatmap-meta">
-        <span id="lc-submissions">0</span> submissions in the past one year
-        <span class="lc-heatmap-stats">
-          Total active days: <strong id="lc-active-days">0</strong>
-          &nbsp;&middot;&nbsp;
-          Max streak: <strong id="lc-streak">0</strong>
-        </span>
+    <div class="lc-content" id="lc-content" hidden>
+      <div class="lc-body">
+        <div class="lc-total"><strong id="lc-total">0</strong><span>problems solved</span></div>
+        <div class="lc-bars" id="lc-bars">
+          <div class="lc-row easy"><span>Easy</span><div class="bar"><i id="lc-easy-bar"></i></div><b id="lc-easy">0</b></div>
+          <div class="lc-row medium"><span>Medium</span><div class="bar"><i id="lc-medium-bar"></i></div><b id="lc-medium">0</b></div>
+          <div class="lc-row hard"><span>Hard</span><div class="bar"><i id="lc-hard-bar"></i></div><b id="lc-hard">0</b></div>
+        </div>
       </div>
-      <div class="lc-heatmap-scroll">
-        <div class="lc-heatmap" id="lc-heatmap" role="img" aria-label="LeetCode submission activity over the past year"></div>
-      </div>
-      <div class="lc-heatmap-legend">
-        <span>Less</span>
-        <i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i>
-        <span>More</span>
+
+      <div class="lc-heatmap-wrap" id="lc-heatmap-wrap" hidden>
+        <div class="lc-heatmap-meta">
+          <span id="lc-submissions">0</span> submissions in the past one year
+          <span class="lc-heatmap-stats">
+            Total active days: <strong id="lc-active-days">0</strong>
+            &nbsp;&middot;&nbsp;
+            Max streak: <strong id="lc-streak">0</strong>
+          </span>
+        </div>
+        <div class="lc-heatmap-scroll">
+          <div class="lc-heatmap" id="lc-heatmap" role="img" aria-label="LeetCode submission activity over the past year"></div>
+        </div>
+        <div class="lc-heatmap-legend">
+          <span>Less</span>
+          <i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i>
+          <span>More</span>
+        </div>
       </div>
     </div>
 
