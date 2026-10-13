@@ -18,7 +18,6 @@ if ('IntersectionObserver' in window) {
 }
 
 // Contact form: opens the visitor's email app with the message prefilled.
-// To receive messages directly instead, replace this with a Formspree/Netlify Forms endpoint.
 const OWNER_EMAIL = 'anantgoyal1001@gmail.com';
 const form = document.getElementById('contact-form');
 const note = document.getElementById('form-note');
@@ -42,7 +41,6 @@ form.addEventListener('submit', e => {
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (calm) return;
 
-  // Tilt (mouse only, so touch scrolling is never blocked)
   if (fine) {
     const targets = document.querySelectorAll('.card:not(form), .photo-frame');
     targets.forEach(el => {
@@ -69,10 +67,7 @@ form.addEventListener('submit', e => {
     });
   }
 
-  // Hero parallax: floating shapes follow the pointer (mouse) or tilt of the phone
   const layers = document.querySelectorAll('.scene .layer');
-  const base = new Map();
-  layers.forEach(l => base.set(l, l.style.transform || ''));
   function move(px, py) {
     layers.forEach(l => {
       const d = Number(l.dataset.depth) || 20;
@@ -89,17 +84,16 @@ form.addEventListener('submit', e => {
   }
 })();
 
-// LeetCode stats
-// Order: (1) /api/leetcode (a Vercel function that asks LeetCode directly, cached for 60 seconds),
-// (2) community live APIs, (3) stats.json kept fresh by a GitHub Action, (4) last result saved in this browser.
-// While the page is open the numbers are re-checked every minute.
+// LeetCode stats + submission heatmap
+// Order: (1) /api/leetcode, (2) community live APIs, (3) stats.json, (4) browser cache
 (function () {
   const USER = 'Anant_goyal2907';
   const CACHE_KEY = 'lc-stats-' + USER;
   const REFRESH_MS = 60000;
   const COMMUNITY = [
-    'https://alfa-leetcode-api.onrender.com/' + USER + '/solved',
+    'https://alfa-leetcode-api.onrender.com/' + USER + '/calendar',
     'https://leetcode-api-faisalshohag.vercel.app/' + USER,
+    'https://alfa-leetcode-api.onrender.com/' + USER + '/solved',
     'https://leetcode-stats-api.herokuapp.com/' + USER
   ];
   const $ = id => document.getElementById(id);
@@ -108,10 +102,134 @@ form.addEventListener('submit', e => {
 
   function normalize(d) {
     if (!d || d.status === 'error' || d.error) return null;
-    const easy = Number(d.easySolved ?? d.easy), medium = Number(d.mediumSolved ?? d.medium), hard = Number(d.hardSolved ?? d.hard);
+    const easy = Number(d.easySolved ?? d.easy);
+    const medium = Number(d.mediumSolved ?? d.medium);
+    const hard = Number(d.hardSolved ?? d.hard);
     if (![easy, medium, hard].every(Number.isFinite)) return null;
     const total = Number(d.totalSolved ?? d.solvedProblem ?? d.total ?? (easy + medium + hard));
-    return Number.isFinite(total) && total > 0 ? { total, easy, medium, hard } : null;
+    if (!Number.isFinite(total) || total <= 0) return null;
+
+    let calendar = d.submissionCalendar || {};
+    if (typeof calendar === 'string') {
+      try { calendar = JSON.parse(calendar); } catch (e) { calendar = {}; }
+    }
+    // faisalshohag API returns calendar as object already
+    const streak = Number(d.streak ?? d.maxStreak ?? 0) || 0;
+    const totalActiveDays = Number(d.totalActiveDays ?? Object.keys(calendar).length) || 0;
+
+    // total submissions from calendar or from totalSubmissions array
+    let submissions = 0;
+    if (d.totalSubmissions && Array.isArray(d.totalSubmissions)) {
+      const all = d.totalSubmissions.find(x => x.difficulty === 'All');
+      if (all) submissions = Number(all.submissions) || 0;
+    }
+    if (!submissions) {
+      submissions = Object.values(calendar).reduce((s, n) => s + (Number(n) || 0), 0);
+    }
+
+    return { total, easy, medium, hard, streak, totalActiveDays, submissionCalendar: calendar, submissions };
+  }
+
+  function level(count) {
+    if (!count) return 0;
+    if (count <= 2) return 1;
+    if (count <= 5) return 2;
+    if (count <= 10) return 3;
+    return 4;
+  }
+
+  function renderHeatmap(calendar, streak, activeDays, submissions) {
+    const wrap = $('lc-heatmap-wrap');
+    const grid = $('lc-heatmap');
+    if (!wrap || !grid) return;
+
+    // Build past ~53 weeks ending today (GitHub-style)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    // Start from the Sunday of the week 52 weeks ago
+    const start = new Date(today);
+    start.setDate(start.getDate() - 364 - start.getDay());
+
+    // Month labels
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let monthHtml = '<div class="lc-heatmap-months">';
+    let lastMonth = -1;
+    const totalDays = Math.round((today - start) / 86400000) + 1;
+    const weeks = Math.ceil(totalDays / 7);
+
+    // Precompute cell data
+    const cells = [];
+    for (let i = 0; i < weeks * 7; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      if (d > today) {
+        cells.push(null);
+        continue;
+      }
+      // LeetCode timestamps are UTC midnight unix seconds
+      const ts = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 1000);
+      const count = Number(calendar[String(ts)] || calendar[ts] || 0) || 0;
+      cells.push({ date: d, count, ts });
+    }
+
+    // Month labels aligned to weeks
+    for (let w = 0; w < weeks; w++) {
+      const cell = cells[w * 7];
+      if (!cell) { monthHtml += '<span style="width:11px"></span>'; continue; }
+      const m = cell.date.getMonth();
+      if (m !== lastMonth) {
+        monthHtml += '<span style="width:' + (11 + 3) * Math.min(4, weeks - w) + 'px">' + months[m] + '</span>';
+        lastMonth = m;
+        // skip next few week slots for this label width (approximate)
+        // simpler: just place label every time month changes with fixed min width
+      }
+    }
+    // Simpler month row: rebuild cleanly
+    monthHtml = '<div class="lc-heatmap-months">';
+    lastMonth = -1;
+    for (let w = 0; w < weeks; w++) {
+      const cell = cells[w * 7 + 3] || cells[w * 7]; // mid-week for stability
+      if (!cell) { monthHtml += '<span style="display:inline-block;width:14px"></span>'; continue; }
+      const m = cell.date.getMonth();
+      if (m !== lastMonth) {
+        monthHtml += '<span style="display:inline-block;width:14px;margin-right:0">' + months[m] + '</span>';
+        lastMonth = m;
+      } else {
+        monthHtml += '<span style="display:inline-block;width:14px"></span>';
+      }
+    }
+    monthHtml += '</div>';
+
+    let html = monthHtml;
+    // Actual cells as CSS grid (column-major: 7 rows)
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      if (!cell) {
+        html += '<div class="cell" style="visibility:hidden"></div>';
+        continue;
+      }
+      const lv = level(cell.count);
+      const label = cell.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        + (cell.count ? ': ' + cell.count + ' submission' + (cell.count > 1 ? 's' : '') : ': no submissions');
+      html += '<div class="cell lv' + lv + '" title="' + label + '" data-count="' + cell.count + '"></div>';
+    }
+    grid.innerHTML = html;
+
+    // Meta numbers
+    const subEl = $('lc-submissions');
+    const activeEl = $('lc-active-days');
+    const streakEl = $('lc-streak');
+    if (subEl) subEl.textContent = submissions || Object.values(calendar).reduce((s, n) => s + (Number(n) || 0), 0);
+    if (activeEl) activeEl.textContent = activeDays || Object.keys(calendar).length;
+    if (streakEl) streakEl.textContent = streak || 0;
+
+    wrap.hidden = false;
+
+    // Scroll to the right (most recent) on mobile
+    const scroll = wrap.querySelector('.lc-heatmap-scroll');
+    if (scroll) {
+      requestAnimationFrame(() => { scroll.scrollLeft = scroll.scrollWidth; });
+    }
   }
 
   function render(s, note) {
@@ -123,6 +241,10 @@ form.addEventListener('submit', e => {
     $('lc-bars').hidden = false;
     $('lc-note').textContent = note;
     shown = true;
+
+    if (s.submissionCalendar && Object.keys(s.submissionCalendar).length) {
+      renderHeatmap(s.submissionCalendar, s.streak, s.totalActiveDays, s.submissions);
+    }
   }
 
   function get(url, ms) {
@@ -145,7 +267,7 @@ form.addEventListener('submit', e => {
       .catch(() => get('stats.json', 8000).then(s => ({ s, note: 'Auto-updated from LeetCode every few hours' })))
       .then(r => { render(r.s, r.note); save(r.s); })
       .catch(() => {
-        if (shown) return;            // keep what is on screen if a refresh fails
+        if (shown) return;
         let cached = null;
         try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch (e) {}
         if (cached && cached.stats) {
