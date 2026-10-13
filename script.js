@@ -1,6 +1,36 @@
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Theme toggle (dark / light) with localStorage + system preference
+(function () {
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  function current() {
+    return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+
+  function apply(theme) {
+    root.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch (e) {}
+    btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+
+  // If no data-theme yet (script in head may have set it), fall back
+  if (!root.getAttribute('data-theme')) {
+    let t = 'dark';
+    try {
+      t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    } catch (e) {}
+    apply(t);
+  } else {
+    btn.setAttribute('aria-label', current() === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+
+  btn.addEventListener('click', () => apply(current() === 'light' ? 'dark' : 'light'));
+})();
+
 // Mobile menu
 const menu = document.getElementById('menu');
 document.getElementById('burger').addEventListener('click', () => menu.classList.toggle('open'));
@@ -17,7 +47,7 @@ if ('IntersectionObserver' in window) {
   items.forEach(el => el.classList.add('show'));
 }
 
-// Contact form: opens the visitor's email app with the message prefilled.
+// Contact form
 const OWNER_EMAIL = 'anantgoyal1001@gmail.com';
 const form = document.getElementById('contact-form');
 const note = document.getElementById('form-note');
@@ -84,8 +114,7 @@ form.addEventListener('submit', e => {
   }
 })();
 
-// LeetCode stats + submission heatmap
-// Order: (1) /api/leetcode, (2) community live APIs, (3) stats.json, (4) browser cache
+// LeetCode stats + submission heatmap + skeleton
 (function () {
   const USER = 'Anant_goyal2907';
   const CACHE_KEY = 'lc-stats-' + USER;
@@ -100,6 +129,13 @@ form.addEventListener('submit', e => {
   if (!$('lc-card')) return;
   let shown = false;
 
+  function hideSkeleton() {
+    const sk = $('lc-skeleton');
+    const content = $('lc-content');
+    if (sk) sk.hidden = true;
+    if (content) content.hidden = false;
+  }
+
   function normalize(d) {
     if (!d || d.status === 'error' || d.error) return null;
     const easy = Number(d.easySolved ?? d.easy);
@@ -113,11 +149,9 @@ form.addEventListener('submit', e => {
     if (typeof calendar === 'string') {
       try { calendar = JSON.parse(calendar); } catch (e) { calendar = {}; }
     }
-    // faisalshohag API returns calendar as object already
     const streak = Number(d.streak ?? d.maxStreak ?? 0) || 0;
     const totalActiveDays = Number(d.totalActiveDays ?? Object.keys(calendar).length) || 0;
 
-    // total submissions from calendar or from totalSubmissions array
     let submissions = 0;
     if (d.totalSubmissions && Array.isArray(d.totalSubmissions)) {
       const all = d.totalSubmissions.find(x => x.difficulty === 'All');
@@ -143,56 +177,33 @@ form.addEventListener('submit', e => {
     const grid = $('lc-heatmap');
     if (!wrap || !grid) return;
 
-    // Build past ~53 weeks ending today (GitHub-style)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    // Start from the Sunday of the week 52 weeks ago
     const start = new Date(today);
     start.setDate(start.getDate() - 364 - start.getDay());
 
-    // Month labels
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    let monthHtml = '<div class="lc-heatmap-months">';
-    let lastMonth = -1;
     const totalDays = Math.round((today - start) / 86400000) + 1;
     const weeks = Math.ceil(totalDays / 7);
 
-    // Precompute cell data
     const cells = [];
     for (let i = 0; i < weeks * 7; i++) {
       const d = new Date(start);
       d.setDate(start.getDate() + i);
-      if (d > today) {
-        cells.push(null);
-        continue;
-      }
-      // LeetCode timestamps are UTC midnight unix seconds
+      if (d > today) { cells.push(null); continue; }
       const ts = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 1000);
       const count = Number(calendar[String(ts)] || calendar[ts] || 0) || 0;
       cells.push({ date: d, count, ts });
     }
 
-    // Month labels aligned to weeks
+    let monthHtml = '<div class="lc-heatmap-months">';
+    let lastMonth = -1;
     for (let w = 0; w < weeks; w++) {
-      const cell = cells[w * 7];
-      if (!cell) { monthHtml += '<span style="width:11px"></span>'; continue; }
-      const m = cell.date.getMonth();
-      if (m !== lastMonth) {
-        monthHtml += '<span style="width:' + (11 + 3) * Math.min(4, weeks - w) + 'px">' + months[m] + '</span>';
-        lastMonth = m;
-        // skip next few week slots for this label width (approximate)
-        // simpler: just place label every time month changes with fixed min width
-      }
-    }
-    // Simpler month row: rebuild cleanly
-    monthHtml = '<div class="lc-heatmap-months">';
-    lastMonth = -1;
-    for (let w = 0; w < weeks; w++) {
-      const cell = cells[w * 7 + 3] || cells[w * 7]; // mid-week for stability
+      const cell = cells[w * 7 + 3] || cells[w * 7];
       if (!cell) { monthHtml += '<span style="display:inline-block;width:14px"></span>'; continue; }
       const m = cell.date.getMonth();
       if (m !== lastMonth) {
-        monthHtml += '<span style="display:inline-block;width:14px;margin-right:0">' + months[m] + '</span>';
+        monthHtml += '<span style="display:inline-block;width:14px">' + months[m] + '</span>';
         lastMonth = m;
       } else {
         monthHtml += '<span style="display:inline-block;width:14px"></span>';
@@ -201,7 +212,6 @@ form.addEventListener('submit', e => {
     monthHtml += '</div>';
 
     let html = monthHtml;
-    // Actual cells as CSS grid (column-major: 7 rows)
     for (let i = 0; i < cells.length; i++) {
       const cell = cells[i];
       if (!cell) {
@@ -215,7 +225,6 @@ form.addEventListener('submit', e => {
     }
     grid.innerHTML = html;
 
-    // Meta numbers
     const subEl = $('lc-submissions');
     const activeEl = $('lc-active-days');
     const streakEl = $('lc-streak');
@@ -225,21 +234,18 @@ form.addEventListener('submit', e => {
 
     wrap.hidden = false;
 
-    // Scroll to the right (most recent) on mobile
     const scroll = wrap.querySelector('.lc-heatmap-scroll');
-    if (scroll) {
-      requestAnimationFrame(() => { scroll.scrollLeft = scroll.scrollWidth; });
-    }
+    if (scroll) requestAnimationFrame(() => { scroll.scrollLeft = scroll.scrollWidth; });
   }
 
-  function render(s, note) {
+  function render(s, noteText) {
+    hideSkeleton();
     $('lc-total').textContent = s.total;
     ['easy', 'medium', 'hard'].forEach(k => {
       $('lc-' + k).textContent = s[k];
       $('lc-' + k + '-bar').style.width = Math.round((s[k] / s.total) * 100) + '%';
     });
-    $('lc-bars').hidden = false;
-    $('lc-note').textContent = note;
+    $('lc-note').textContent = noteText;
     shown = true;
 
     if (s.submissionCalendar && Object.keys(s.submissionCalendar).length) {
@@ -273,6 +279,7 @@ form.addEventListener('submit', e => {
         if (cached && cached.stats) {
           render(cached.stats, 'Live data is unavailable right now. Showing saved stats from ' + new Date(cached.ts).toLocaleDateString());
         } else {
+          hideSkeleton();
           $('lc-note').textContent = 'Live stats are unavailable right now. Open my LeetCode profile to see the latest.';
         }
       });
