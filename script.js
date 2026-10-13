@@ -90,21 +90,24 @@ form.addEventListener('submit', e => {
 })();
 
 // LeetCode stats
-// Order: (1) community live APIs, (2) stats.json that a GitHub Action refreshes from LeetCode every few hours,
-// (3) last good result cached in this browser, (4) a plain message. LeetCode has no official public API.
+// Order: (1) /api/leetcode (a Vercel function that asks LeetCode directly, cached for 60 seconds),
+// (2) community live APIs, (3) stats.json kept fresh by a GitHub Action, (4) last result saved in this browser.
+// While the page is open the numbers are re-checked every minute.
 (function () {
   const USER = 'Anant_goyal2907';
   const CACHE_KEY = 'lc-stats-' + USER;
-  const LIVE = [
+  const REFRESH_MS = 60000;
+  const COMMUNITY = [
     'https://alfa-leetcode-api.onrender.com/' + USER + '/solved',
     'https://leetcode-api-faisalshohag.vercel.app/' + USER,
     'https://leetcode-stats-api.herokuapp.com/' + USER
   ];
   const $ = id => document.getElementById(id);
   if (!$('lc-card')) return;
+  let shown = false;
 
   function normalize(d) {
-    if (!d || d.status === 'error') return null;
+    if (!d || d.status === 'error' || d.error) return null;
     const easy = Number(d.easySolved ?? d.easy), medium = Number(d.mediumSolved ?? d.medium), hard = Number(d.hardSolved ?? d.hard);
     if (![easy, medium, hard].every(Number.isFinite)) return null;
     const total = Number(d.totalSolved ?? d.solvedProblem ?? d.total ?? (easy + medium + hard));
@@ -119,6 +122,7 @@ form.addEventListener('submit', e => {
     });
     $('lc-bars').hidden = false;
     $('lc-note').textContent = note;
+    shown = true;
   }
 
   function get(url, ms) {
@@ -134,17 +138,24 @@ form.addEventListener('submit', e => {
     try { localStorage.setItem(CACHE_KEY, JSON.stringify({ stats, ts: Date.now() })); } catch (e) {}
   }
 
-  Promise.any(LIVE.map(u => get(u, 12000)))
-    .then(stats => { render(stats, 'Live from LeetCode'); save(stats); })
-    .catch(() => get('stats.json', 8000)
-      .then(stats => { render(stats, 'Auto-updated from LeetCode every few hours'); save(stats); }))
-    .catch(() => {
-      let cached = null;
-      try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch (e) {}
-      if (cached && cached.stats) {
-        render(cached.stats, 'Live data is unavailable right now. Showing saved stats from ' + new Date(cached.ts).toLocaleDateString());
-      } else {
-        $('lc-note').textContent = 'Live stats are unavailable right now. Open my LeetCode profile to see the latest.';
-      }
-    });
+  function load() {
+    return get('/api/leetcode', 9000)
+      .then(s => ({ s, note: 'Live from LeetCode, refreshes every minute' }))
+      .catch(() => Promise.any(COMMUNITY.map(u => get(u, 12000))).then(s => ({ s, note: 'Live from LeetCode' })))
+      .catch(() => get('stats.json', 8000).then(s => ({ s, note: 'Auto-updated from LeetCode every few hours' })))
+      .then(r => { render(r.s, r.note); save(r.s); })
+      .catch(() => {
+        if (shown) return;            // keep what is on screen if a refresh fails
+        let cached = null;
+        try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch (e) {}
+        if (cached && cached.stats) {
+          render(cached.stats, 'Live data is unavailable right now. Showing saved stats from ' + new Date(cached.ts).toLocaleDateString());
+        } else {
+          $('lc-note').textContent = 'Live stats are unavailable right now. Open my LeetCode profile to see the latest.';
+        }
+      });
+  }
+
+  load();
+  setInterval(() => { if (!document.hidden) load(); }, REFRESH_MS);
 })();
