@@ -125,6 +125,27 @@
         <div class="lc-row hard"><span>Hard</span><div class="bar"><i id="lc-hard-bar"></i></div><b id="lc-hard">0</b></div>
       </div>
     </div>
+
+    <!-- Submission heatmap (GitHub-style calendar) -->
+    <div class="lc-heatmap-wrap" id="lc-heatmap-wrap" hidden>
+      <div class="lc-heatmap-meta">
+        <span id="lc-submissions">0</span> submissions in the past one year
+        <span class="lc-heatmap-stats">
+          Total active days: <strong id="lc-active-days">0</strong>
+          &nbsp;&middot;&nbsp;
+          Max streak: <strong id="lc-streak">0</strong>
+        </span>
+      </div>
+      <div class="lc-heatmap-scroll">
+        <div class="lc-heatmap" id="lc-heatmap" role="img" aria-label="LeetCode submission activity over the past year"></div>
+      </div>
+      <div class="lc-heatmap-legend">
+        <span>Less</span>
+        <i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i>
+        <span>More</span>
+      </div>
+    </div>
+
     <p class="muted" id="lc-note" role="status">Loading live stats...</p>
   </div>
   <div class="grid two">
