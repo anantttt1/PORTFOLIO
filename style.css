@@ -299,3 +299,6 @@ html,body{overflow-x:clip}
   .cube,.ring,.bob,.floor,.chip{animation:none}
   .reveal{transform:none}
 }
+
+.proj-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.project .proj-actions .btn{margin-top:0}
