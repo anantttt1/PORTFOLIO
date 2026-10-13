@@ -34,3 +34,57 @@ form.addEventListener('submit', e => {
   window.location.href = 'mailto:' + OWNER_EMAIL + '?subject=' + subject + '&body=' + body;
   note.textContent = 'Opening your email app... if nothing opens, write to ' + OWNER_EMAIL;
 });
+
+
+// 3D touch: tilt cards, hero parallax
+(function () {
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (calm) return;
+
+  // Tilt (mouse only, so touch scrolling is never blocked)
+  if (fine) {
+    const targets = document.querySelectorAll('.card:not(form), .photo-frame');
+    targets.forEach(el => {
+      el.classList.add('tilt');
+      const max = el.classList.contains('photo-frame') ? 12 : el.classList.contains('project') ? 9 : 6;
+      let raf = null;
+      el.addEventListener('pointermove', e => {
+        if (e.pointerType !== 'mouse') return;
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          el.classList.add('active');
+          el.style.setProperty('--mx', (x * 100) + '%');
+          el.style.setProperty('--my', (y * 100) + '%');
+          el.style.transform = 'perspective(900px) rotateX(' + ((0.5 - y) * max) + 'deg) rotateY(' + ((x - 0.5) * max * 1.4) + 'deg) translateZ(8px)';
+        });
+      });
+      el.addEventListener('pointerleave', () => {
+        cancelAnimationFrame(raf);
+        el.classList.remove('active');
+        el.style.transform = '';
+      });
+    });
+  }
+
+  // Hero parallax: floating shapes follow the pointer (mouse) or tilt of the phone
+  const layers = document.querySelectorAll('.scene .layer');
+  const base = new Map();
+  layers.forEach(l => base.set(l, l.style.transform || ''));
+  function move(px, py) {
+    layers.forEach(l => {
+      const d = Number(l.dataset.depth) || 20;
+      l.style.transform = 'translate3d(' + (px * d) + 'px,' + (py * d) + 'px,0)';
+    });
+  }
+  const hero = document.getElementById('home');
+  if (fine && hero) {
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect();
+      move((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1);
+    });
+    hero.addEventListener('pointerleave', () => move(0, 0));
+  }
+})();
