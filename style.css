@@ -70,23 +70,6 @@ footer{text-align:center;color:var(--muted);padding:50px 0 30px;font-size:.9rem}
 
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
 .reveal.show{opacity:1;transform:none}
-/* LeetCode stats card */
-.lc{margin-bottom:20px}
-.lc-body{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin:14px 0 6px}
-.lc-body:has(#lc-bars[hidden]){grid-template-columns:1fr}
-.lc-total strong{display:block;font-family:"Space Grotesk",Inter,sans-serif;font-size:3rem;line-height:1;color:var(--accent)}
-.lc-total span{color:var(--muted);font-size:.9rem}
-.lc-bars{display:grid;gap:12px}
-.lc-row{display:grid;grid-template-columns:64px 1fr 44px;gap:12px;align-items:center;font-size:.9rem}
-.lc-row b{text-align:right}
-.lc-row .bar{height:8px;background:#1a2338;border-radius:999px;overflow:hidden}
-.lc-row .bar i{display:block;height:100%;width:0;border-radius:999px;transition:width .8s ease}
-.lc-row.easy .bar i{background:#4ade80}
-.lc-row.medium .bar i{background:#fbbf24}
-.lc-row.hard .bar i{background:#f87171}
-#lc-note{margin-top:10px;font-size:.8rem}
-@media (max-width:760px){.lc-body{grid-template-columns:1fr;gap:18px}}
-
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
 @media (max-width:760px){
