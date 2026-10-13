@@ -36,13 +36,13 @@ form.addEventListener('submit', e => {
 });
 
 
-// LeetCode live stats
-// LeetCode has no official public API, so a few community APIs are tried at the same time and the
-// first valid answer wins. The last good result is cached in the browser as a backup.
+// LeetCode stats
+// Order: (1) community live APIs, (2) stats.json that a GitHub Action refreshes from LeetCode every few hours,
+// (3) last good result cached in this browser, (4) a plain message. LeetCode has no official public API.
 (function () {
   const USER = 'Anant_goyal2907';
   const CACHE_KEY = 'lc-stats-' + USER;
-  const SOURCES = [
+  const LIVE = [
     'https://alfa-leetcode-api.onrender.com/' + USER + '/solved',
     'https://leetcode-api-faisalshohag.vercel.app/' + USER,
     'https://leetcode-stats-api.herokuapp.com/' + USER
@@ -52,9 +52,9 @@ form.addEventListener('submit', e => {
 
   function normalize(d) {
     if (!d || d.status === 'error') return null;
-    const easy = Number(d.easySolved), medium = Number(d.mediumSolved), hard = Number(d.hardSolved);
+    const easy = Number(d.easySolved ?? d.easy), medium = Number(d.mediumSolved ?? d.medium), hard = Number(d.hardSolved ?? d.hard);
     if (![easy, medium, hard].every(Number.isFinite)) return null;
-    const total = Number(d.totalSolved ?? d.solvedProblem ?? (easy + medium + hard));
+    const total = Number(d.totalSolved ?? d.solvedProblem ?? d.total ?? (easy + medium + hard));
     return Number.isFinite(total) && total > 0 ? { total, easy, medium, hard } : null;
   }
 
@@ -68,25 +68,30 @@ form.addEventListener('submit', e => {
     $('lc-note').textContent = note;
   }
 
-  function get(url) {
+  function get(url, ms) {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 12000);
-    return fetch(url, { signal: ctrl.signal })
+    const t = setTimeout(() => ctrl.abort(), ms);
+    return fetch(url, { signal: ctrl.signal, cache: 'no-store' })
       .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(d => { const n = normalize(d); if (!n) throw new Error('bad data'); return n; })
       .finally(() => clearTimeout(t));
   }
 
-  Promise.any(SOURCES.map(get)).then(stats => {
-    render(stats, 'Live from LeetCode');
+  function save(stats) {
     try { localStorage.setItem(CACHE_KEY, JSON.stringify({ stats, ts: Date.now() })); } catch (e) {}
-  }).catch(() => {
-    let cached = null;
-    try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch (e) {}
-    if (cached && cached.stats) {
-      render(cached.stats, 'Live data is unavailable right now. Showing saved stats from ' + new Date(cached.ts).toLocaleDateString());
-    } else {
-      $('lc-note').textContent = 'Live stats are unavailable right now. Open my LeetCode profile to see the latest.';
-    }
-  });
+  }
+
+  Promise.any(LIVE.map(u => get(u, 12000)))
+    .then(stats => { render(stats, 'Live from LeetCode'); save(stats); })
+    .catch(() => get('stats.json', 8000)
+      .then(stats => { render(stats, 'Auto-updated from LeetCode every few hours'); save(stats); }))
+    .catch(() => {
+      let cached = null;
+      try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch (e) {}
+      if (cached && cached.stats) {
+        render(cached.stats, 'Live data is unavailable right now. Showing saved stats from ' + new Date(cached.ts).toLocaleDateString());
+      } else {
+        $('lc-note').textContent = 'Live stats are unavailable right now. Open my LeetCode profile to see the latest.';
+      }
+    });
 })();
