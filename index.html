@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="photo-stage.css">
 <script>
-  // Apply theme before paint to avoid flash
   (function () {
     try {
       var t = localStorage.getItem('theme');
@@ -167,7 +167,6 @@
   <h2>Achievements & Certifications</h2>
   <div class="card lc" id="lc-card">
     <div class="row"><h3>LeetCode stats</h3><a class="muted" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">@Anant_goyal2907</a></div>
-
     <div class="lc-skeleton" id="lc-skeleton" aria-hidden="true">
       <div class="lc-skel-body">
         <div class="skel skel-total"></div>
@@ -180,7 +179,6 @@
       <div class="skel skel-heatmap"></div>
       <div class="skel skel-note"></div>
     </div>
-
     <div class="lc-content" id="lc-content" hidden>
       <div class="lc-body">
         <div class="lc-total"><strong id="lc-total">0</strong><span>problems solved</span></div>
@@ -190,7 +188,6 @@
           <div class="lc-row hard"><span>Hard</span><div class="bar"><i id="lc-hard-bar"></i></div><b id="lc-hard">0</b></div>
         </div>
       </div>
-
       <div class="lc-heatmap-wrap" id="lc-heatmap-wrap" hidden>
         <div class="lc-heatmap-meta">
           <span id="lc-submissions">0</span> submissions in the past one year
@@ -210,7 +207,6 @@
         </div>
       </div>
     </div>
-
     <p class="muted" id="lc-note" role="status">Loading live stats...</p>
   </div>
   <div class="grid two">
