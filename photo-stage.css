@@ -1,0 +1,187 @@
+/* ========== NASA-grade photo stage ========== */
+.profile-box{
+  position:relative;
+  display:flex;justify-content:center;align-items:center;
+  width:min(100%, 420px);aspect-ratio:1;
+  margin:0 auto;
+}
+.photo-orbit{
+  position:absolute;inset:-8%;
+  pointer-events:none;z-index:0;
+}
+.orbit-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:1px solid transparent;
+  border-top-color:rgba(110,231,183,.55);
+  border-right-color:rgba(96,165,250,.25);
+  animation:orbitSpin 14s linear infinite;
+}
+.orbit-ring.r1{inset:4%;animation-duration:18s}
+.orbit-ring.r2{
+  inset:12%;
+  border-top-color:rgba(96,165,250,.5);
+  border-left-color:rgba(110,231,183,.2);
+  border-right-color:transparent;
+  animation-duration:12s;animation-direction:reverse;
+}
+.orbit-ring.r3{
+  inset:22%;
+  border-top-color:rgba(167,139,250,.4);
+  border-bottom-color:rgba(110,231,183,.15);
+  border-right-color:transparent;
+  animation-duration:22s;
+  opacity:.7;
+}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+
+.orbit-dot{
+  position:absolute;width:8px;height:8px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 12px var(--accent),0 0 24px rgba(110,231,183,.4);
+  top:50%;left:50%;
+  animation:orbitDot 14s linear infinite;
+}
+.orbit-dot.d1{--r:46%;animation-duration:14s}
+.orbit-dot.d2{--r:38%;animation-duration:12s;animation-direction:reverse;background:var(--accent2);box-shadow:0 0 12px var(--accent2),0 0 24px rgba(96,165,250,.4)}
+.orbit-dot.d3{--r:28%;animation-duration:20s;width:6px;height:6px;background:#a78bfa;box-shadow:0 0 10px #a78bfa}
+@keyframes orbitDot{
+  from{transform:rotate(0deg) translateX(var(--r)) rotate(0deg)}
+  to{transform:rotate(360deg) translateX(var(--r)) rotate(-360deg)}
+}
+
+.orbit-particles{position:absolute;inset:0;overflow:visible}
+.orbit-particles span{
+  position:absolute;width:2px;height:2px;border-radius:50%;
+  background:rgba(110,231,183,.8);box-shadow:0 0 6px rgba(110,231,183,.6);
+  animation:particleFloat linear infinite;
+  opacity:0;
+}
+@keyframes particleFloat{
+  0%{opacity:0;transform:translate(0,0) scale(.5)}
+  15%{opacity:.9}
+  85%{opacity:.5}
+  100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(1.2)}
+}
+
+.photo-frame{
+  position:relative;z-index:1;
+  width:min(100%, 340px);
+  padding:10px;
+  border-radius:24px;
+  border:1px solid rgba(110,231,183,.35);
+  background:
+    linear-gradient(145deg, rgba(110,231,183,.12), rgba(96,165,250,.08) 50%, rgba(167,139,250,.06));
+  box-shadow:
+    0 0 0 1px rgba(110,231,183,.12),
+    0 25px 60px rgba(0,0,0,.5),
+    0 0 80px rgba(110,231,183,.08);
+  transform-style:preserve-3d;
+  animation:photoFloat 7s ease-in-out infinite;
+}
+@keyframes photoFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+[data-theme="light"] .photo-frame{
+  border-color:rgba(13,159,110,.3);
+  box-shadow:0 12px 40px rgba(0,0,0,.1),0 0 40px rgba(13,159,110,.08);
+}
+
+.photo-aura{
+  position:absolute;inset:-20%;border-radius:40%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(110,231,183,.25), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(96,165,250,.2), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(167,139,250,.1), transparent 60%);
+  filter:blur(20px);
+  animation:auraPulse 5s ease-in-out infinite;
+  pointer-events:none;z-index:0;
+}
+@keyframes auraPulse{
+  0%,100%{opacity:.6;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.08)}
+}
+
+.photo-scan{
+  position:absolute;left:10px;right:10px;top:10px;
+  height:3px;border-radius:2px;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg, transparent, rgba(110,231,183,.85), rgba(96,165,250,.7), transparent);
+  box-shadow:0 0 20px rgba(110,231,183,.6),0 0 40px rgba(96,165,250,.3);
+  animation:scanSweep 4.5s ease-in-out infinite;
+  opacity:.85;
+}
+@keyframes scanSweep{
+  0%{top:12px;opacity:0}
+  8%{opacity:.9}
+  92%{opacity:.7}
+  100%{top:calc(100% - 16px);opacity:0}
+}
+
+.photo-grid{
+  position:absolute;inset:10px;border-radius:18px;z-index:2;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(110,231,183,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96,165,250,.04) 1px, transparent 1px);
+  background-size:22px 22px;
+  mix-blend-mode:screen;
+  opacity:.5;
+  animation:gridDrift 20s linear infinite;
+}
+@keyframes gridDrift{to{background-position:22px 22px}}
+[data-theme="light"] .photo-grid{mix-blend-mode:multiply;opacity:.25}
+
+.photo-frame img{
+  display:block;width:100%;height:auto;aspect-ratio:4/5;
+  object-fit:cover;object-position:center top;border-radius:18px;
+  position:relative;z-index:1;
+  transform:translateZ(24px);
+  box-shadow:0 16px 30px rgba(0,0,0,.4);
+  filter:contrast(1.05) saturate(1.05);
+}
+
+.photo-shine{
+  position:absolute;inset:10px;border-radius:18px;z-index:2;pointer-events:none;
+  background:linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,255,255,.08) 42%,
+    rgba(255,255,255,.18) 50%,
+    rgba(255,255,255,.06) 58%,
+    transparent 70%
+  );
+  background-size:200% 100%;
+  animation:shineSweep 6s ease-in-out infinite;
+  mix-blend-mode:overlay;
+}
+@keyframes shineSweep{
+  0%,100%{background-position:120% 0;opacity:0}
+  20%{opacity:.7}
+  50%{background-position:-20% 0;opacity:.5}
+  80%{opacity:0}
+}
+
+.photo-frame::after{
+  content:"";position:absolute;inset:-18px;border-radius:32px;pointer-events:none;z-index:0;
+  border:1.5px dashed rgba(110,231,183,.25);
+  animation:dashOrbit 30s linear infinite;
+}
+@keyframes dashOrbit{to{transform:rotate(360deg)}}
+.photo-frame::before{
+  content:"";position:absolute;inset:-14px;border:1.5px solid rgba(110,231,183,.28);
+  border-radius:30px;transform:translateZ(-40px);pointer-events:none;
+  box-shadow:0 0 40px rgba(110,231,183,.1);
+}
+
+.photo-frame.tilt.active{animation:none}
+.photo-frame.tilt.active .photo-aura{opacity:1}
+
+@media (max-width:760px){
+  .profile-box{width:min(100%, 300px)}
+  .photo-frame{width:min(100%, 260px)}
+  .orbit-ring.r3,.orbit-dot.d3{display:none}
+  .photo-scan{animation-duration:5.5s}
+}
+@media (prefers-reduced-motion:reduce){
+  .orbit-ring,.orbit-dot,.photo-frame,.photo-aura,.photo-scan,.photo-grid,.photo-shine,.photo-frame::after,
+  .orbit-particles span{animation:none !important}
+  .photo-scan,.photo-shine{opacity:0}
+}
