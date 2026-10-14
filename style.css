@@ -305,3 +305,4 @@ html,body{overflow-x:clip}
 .project:hover .proj-thumb img{transform:scale(1.04)}
 .project:hover .proj-thumb{border-color:var(--accent)}
 .proj-thumb:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (min-width:761px){#projects .grid.three{grid-template-columns:repeat(2,1fr)}}
