@@ -53,3 +53,33 @@
 }
 .pa body{overflow-x:clip}
 .pa .hero{overflow-x:clip}
+
+/* ===== 4-corner orbs -> collision -> burst ===== */
+.pa-orbs,.pa-impact{position:fixed;pointer-events:none;z-index:60}
+.pa-orbs{inset:0;overflow:hidden}
+.pa-orb{
+  position:absolute;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;
+  background:radial-gradient(circle,#fff 0 28%,var(--c) 58%,transparent 75%);
+  box-shadow:0 0 22px 8px var(--c),0 0 60px 18px var(--c);will-change:transform;
+}
+.pa-orb::after{
+  content:"";position:absolute;right:50%;top:50%;width:190px;height:5px;margin-top:-2.5px;border-radius:5px;
+  transform-origin:right center;transform:rotate(var(--a));
+  background:linear-gradient(90deg,transparent,var(--c));filter:blur(1px);opacity:.85;
+}
+.pa-impact{width:0;height:0}
+.pa-core{
+  position:absolute;left:-150px;top:-150px;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,#fff 0,rgba(255,255,255,.9) 12%,rgba(110,231,183,.7) 32%,rgba(96,165,250,.35) 55%,transparent 72%);
+  mix-blend-mode:screen;opacity:0;animation:paCore .9s ease-out forwards;
+}
+@keyframes paCore{0%{opacity:1;transform:scale(.2)}35%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.6)}}
+.pa-shock{
+  position:absolute;left:-60px;top:-60px;width:120px;height:120px;border-radius:50%;
+  border:3px solid rgba(110,231,183,.9);box-shadow:0 0 24px rgba(96,165,250,.8),inset 0 0 24px rgba(167,139,250,.5);
+  opacity:0;animation:paShock 1s cubic-bezier(.1,.7,.3,1) forwards;
+}
+@keyframes paShock{0%{opacity:.95;transform:scale(.1)}100%{opacity:0;transform:scale(5.5)}}
+.pa-spark{position:absolute;left:-2.5px;top:-2.5px;width:5px;height:5px;border-radius:50%}
+@media (max-width:760px){.pa-orb::after{width:110px}}
+@media (prefers-reduced-motion:reduce){.pa-orbs,.pa-impact{display:none}}

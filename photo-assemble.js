@@ -17,12 +17,68 @@
     requestAnimationFrame(function () { if (old) old.remove(); });
   }
 
+  var COLORS = ['#6ee7b7', '#60a5fa', '#a78bfa', '#f472b6'];
+
+  function orbPhase(cb) {
+    var fr = frame.getBoundingClientRect();
+    var px = fr.left + fr.width / 2, py = fr.top + fr.height / 2;
+    var W = window.innerWidth, H = window.innerHeight, m = 40;
+    var starts = [[-m, -m], [W + m, -m], [W + m, H + m], [-m, H + m]];
+    var layer = document.createElement('div');
+    layer.className = 'pa-orbs';
+    document.body.appendChild(layer);
+    var DUR = 1250, left = starts.length;
+
+    starts.forEach(function (s, i) {
+      var dx = px - s[0], dy = py - s[1], len = Math.sqrt(dx * dx + dy * dy);
+      var nx = -dy / len, ny = dx / len, curl = (i % 2 ? 1 : -1) * rand(70, 130);
+      var orb = document.createElement('div');
+      orb.className = 'pa-orb';
+      orb.style.setProperty('--c', COLORS[i]);
+      orb.style.setProperty('--a', Math.atan2(dy, dx) + 'rad');
+      layer.appendChild(orb);
+      var mid = [s[0] + dx * 0.5 + nx * curl, s[1] + dy * 0.5 + ny * curl];
+      var a = orb.animate([
+        { transform: 'translate(' + s[0] + 'px,' + s[1] + 'px) scale(.6)', opacity: 0, offset: 0 },
+        { opacity: 1, offset: 0.12 },
+        { transform: 'translate(' + mid[0] + 'px,' + mid[1] + 'px) scale(1)', offset: 0.55 },
+        { transform: 'translate(' + px + 'px,' + py + 'px) scale(1.25)', opacity: 1, offset: 1 }
+      ], { duration: DUR, easing: 'cubic-bezier(.45,0,.75,.55)', fill: 'forwards' });
+      a.onfinish = function () { if (--left === 0) { layer.remove(); impact(px, py); cb(); } };
+    });
+  }
+
+  function impact(px, py) {
+    var box = document.createElement('div');
+    box.className = 'pa-impact';
+    box.style.left = px + 'px'; box.style.top = py + 'px';
+    var core = document.createElement('div'); core.className = 'pa-core'; box.appendChild(core);
+    for (var i = 0; i < 3; i++) {
+      var r = document.createElement('div'); r.className = 'pa-shock'; r.style.animationDelay = (i * 0.12) + 's'; box.appendChild(r);
+    }
+    for (var j = 0; j < 36; j++) {
+      var sp = document.createElement('span'); sp.className = 'pa-spark';
+      sp.style.background = COLORS[j % 4]; sp.style.boxShadow = '0 0 8px ' + COLORS[j % 4];
+      box.appendChild(sp);
+      var ang = rand(0, Math.PI * 2), d = rand(90, 340);
+      sp.animate([
+        { transform: 'translate(0,0) scale(1)', opacity: 1 },
+        { transform: 'translate(' + Math.cos(ang) * d + 'px,' + Math.sin(ang) * d + 'px) scale(.2)', opacity: 0 }
+      ], { duration: rand(600, 1100), easing: 'cubic-bezier(.1,.8,.3,1)', fill: 'forwards' });
+    }
+    document.body.appendChild(box);
+    setTimeout(function () { box.remove(); }, 1500);
+  }
+
   function run() {
     if (running) return;
     running = true;
     frame.classList.remove('pa-done');
-    var old = frame.querySelector('.pa-shards'); if (old) old.remove();
+    var o = frame.querySelector('.pa-shards'); if (o) o.remove();
+    orbPhase(build);
+  }
 
+  function build() {
     var cs = getComputedStyle(frame);
     var imgRect = img.getBoundingClientRect();
     var frameRect = frame.getBoundingClientRect();
@@ -58,13 +114,13 @@
         // explode direction: away from centre, plus chaos
         var nx = (c + 0.5) / COLS - 0.5, ny = (r + 0.5) / ROWS - 0.5;
         var dist = Math.sqrt(nx * nx + ny * ny);           // 0 .. ~0.64
+        // start collapsed at the collision point (frame centre), then fly out to the slot
         var from =
-          'translate3d(' + (nx * w * rand(2.2, 4.2) + rand(-120, 120)) + 'px,' +
-          (ny * h * rand(2.2, 4.2) + rand(-120, 120)) + 'px,' + rand(-700, 420) + 'px) ' +
-          'rotateX(' + rand(-200, 200) + 'deg) rotateY(' + rand(-200, 200) + 'deg) rotateZ(' + rand(-180, 180) + 'deg) ' +
-          'scale(' + rand(0.25, 1.5) + ')';
-        var delay = 150 + dist * 900 + rand(0, 320);       // centre locks in first, edges last
-        var dur = rand(1100, 1700);
+          'translate3d(' + (-nx * w + rand(-25, 25)) + 'px,' + (-ny * h + rand(-25, 25)) + 'px,' + rand(-250, 450) + 'px) ' +
+          'rotateX(' + rand(-220, 220) + 'deg) rotateY(' + rand(-220, 220) + 'deg) rotateZ(' + rand(-200, 200) + 'deg) ' +
+          'scale(' + rand(0.1, 0.35) + ')';
+        var delay = dist * 450 + rand(0, 180);              // centre first, edges last
+        var dur = rand(950, 1500);
         maxEnd = Math.max(maxEnd, delay + dur);
         tiles.push({ el: t, from: from, delay: delay, dur: dur });
       }
@@ -99,7 +155,14 @@
     setTimeout(function () { f.remove(); rg.remove(); }, 1100);
   }
 
-  function start() { setTimeout(run, 250); }
+  function start() {
+    // play the intro once the photo is actually on screen (matters on mobile, where it sits below the text)
+    if (!('IntersectionObserver' in window)) { setTimeout(run, 250); return; }
+    var io = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { io.disconnect(); setTimeout(run, 250); }
+    }, { threshold: 0.5 });
+    io.observe(frame);
+  }
 
   if (img.complete && img.naturalWidth) start();
   else {
