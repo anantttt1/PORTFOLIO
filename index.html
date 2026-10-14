@@ -1,1 +1,266 @@
-PLACEHOLDER_INDEX
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anant Goyal | Portfolio</title>
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Anant Goyal - B.Tech CSE student, full-stack and computer vision projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Apply theme before paint to avoid flash
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <a href="#home" class="logo">AG<span>.</span></a>
+  <nav id="menu">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact" class="btn small">Get in touch</a>
+  </nav>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+      <span class="icon-moon" aria-hidden="true">&#9790;</span>
+      <span class="icon-sun" aria-hidden="true">&#9788;</span>
+    </button>
+    <button id="burger" aria-label="Toggle menu">&#9776;</button>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="scene" aria-hidden="true">
+    <div class="floor"></div>
+    <div class="layer" data-depth="26" style="left:4%;top:18%"><div class="item bob"><div class="cube" style="--s:64px"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+    <div class="layer" data-depth="44" style="right:6%;top:17%"><div class="item bob slow"><div class="cube alt" style="--s:96px"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+    <div class="layer" data-depth="18" style="left:46%;bottom:14%"><div class="item bob"><div class="ring"></div></div></div>
+    <div class="layer" data-depth="34" style="left:3%;bottom:12%"><div class="item bob slow"><div class="cube" style="--s:36px"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+  </div>
+  <div class="hero-layout">
+    <div class="hero-copy">
+      <p class="eyebrow">Hi, I'm</p>
+      <h1>Anant Goyal</h1>
+      <p class="role">B.Tech CSE student &middot; Full-stack & Computer Vision &middot; Data Science</p>
+      <p class="lead">I build web apps, games and computer vision tools. Currently studying at GLA University, Mathura and solving problems on LeetCode every day.</p>
+      <div class="cta">
+        <a href="assets/Anant-Goyal-Resume.pdf" download class="btn">Download Resume</a>
+        <a href="#contact" class="btn ghost">Get in touch</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/anantttt1" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/anant-goyal-417b81372" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">LeetCode</a>
+      </div>
+    </div>
+
+    <div class="profile-box">
+      <div class="photo-orbit" aria-hidden="true">
+        <div class="orbit-ring r1"></div>
+        <div class="orbit-ring r2"></div>
+        <div class="orbit-ring r3"></div>
+        <div class="orbit-dot d1"></div>
+        <div class="orbit-dot d2"></div>
+        <div class="orbit-dot d3"></div>
+        <div class="orbit-particles" id="orbit-particles"></div>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-aura"></div>
+        <div class="photo-scan"></div>
+        <div class="photo-grid"></div>
+        <img src="assets/image.png" alt="Anant Goyal portrait" />
+        <div class="photo-shine"></div>
+        <span class="chip c1">Full-Stack</span>
+        <span class="chip c2">Computer Vision</span>
+        <span class="chip c3">DSA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="reveal">
+  <h2>About me</h2>
+  <div class="grid two">
+    <p>I'm a Computer Science & Engineering student at GLA University with a 7.57 CPI. I like turning ideas into working products, from a hand-gesture shape generator using OpenCV to an endless runner game in plain JavaScript.</p>
+    <div class="card">
+      <h3>Education</h3>
+      <ul class="plain">
+        <li><strong>B.Tech, CSE</strong><br>GLA University &middot; 2025 - Present &middot; 7.57 CPI</li>
+        <li><strong>High School</strong><br>Kanha Makhan Public School &middot; 2022-2023</li>
+        <li><strong>Intermediate</strong><br>Kanha Makhan Public School &middot; 2024-2025</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <h2>Projects</h2>
+  <div class="grid three">
+    <article class="card project">
+      <a class="proj-thumb" href="https://gesturecanvas-omega.vercel.app/" target="_blank" rel="noopener" aria-label="Gesture Canvas demo">
+        <img src="assets/gesture-canvas.svg" alt="Gesture Canvas preview" width="960" height="540" loading="lazy" />
+      </a>
+      <div class="row"><h3>Gesture Canvas</h3><span class="muted">Jun - Aug 2026</span></div>
+      <p class="muted">Frontend Developer + Computer Vision</p>
+      <p>A creative drawing website that lets users draw and sketch freely using their hand movements. It offers a simple, interactive, and user-friendly experience to bring ideas to life on a digital canvas.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>MediaPipe</span></div>
+      <div class="proj-actions">
+        <a class="btn small" href="https://gesturecanvas-omega.vercel.app/" target="_blank" rel="noopener">Live demo</a>
+        <a class="btn small" href="https://github.com/anantttt1/GestureCanvas" target="_blank" rel="noopener">Code</a>
+      </div>
+    </article>
+    <article class="card project">
+      <a class="proj-thumb" href="https://endlessrunner-zeta.vercel.app/" target="_blank" rel="noopener" aria-label="Endless Runner demo">
+        <img src="assets/endless-runner.svg" alt="Endless Runner preview" width="960" height="540" loading="lazy" />
+      </a>
+      <div class="row"><h3>Endless Runner</h3><span class="muted">Aug - Oct 2026</span></div>
+      <p class="muted">Frontend Developer</p>
+      <p>An endless runner prototype with player movement, obstacle avoidance, collision detection and score tracking.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="proj-actions">
+        <a class="btn small" href="https://endlessrunner-zeta.vercel.app/" target="_blank" rel="noopener">Play it</a>
+        <a class="btn small" href="https://github.com/anantttt1/EndlessRunner" target="_blank" rel="noopener">Code</a>
+      </div>
+    </article>
+    <article class="card project">
+      <a class="proj-thumb" href="https://gesturebox.vercel.app/" target="_blank" rel="noopener" aria-label="Gesture Box demo">
+        <img src="assets/gesture-box.svg" alt="Gesture Box preview" width="960" height="540" loading="lazy" />
+      </a>
+      <div class="row"><h3>Gesture Box</h3><span class="muted">April - May 2026</span></div>
+      <p class="muted">Frontend Developer + Computer Vision</p>
+      <p>A hand-tracking web app where you draw and move boxes in the air using pinch, two-finger and fist gestures, all running live in your browser with your webcam.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>MediaPipe</span></div>
+      <div class="proj-actions">
+        <a class="btn small" href="https://gesturebox.vercel.app/" target="_blank" rel="noopener">Live demo</a>
+        <a class="btn small" href="https://github.com/anantttt1/GESTURE-BOX" target="_blank" rel="noopener">Code</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <h2>Skills</h2>
+  <div class="grid three">
+    <div class="card"><h3>Full-Stack</h3><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>MongoDB</span><span>MySQL</span></div></div>
+    <div class="card"><h3>Languages</h3><div class="tags"><span>Java</span><span>Python</span><span>C</span></div></div>
+    <div class="card"><h3>Core CS</h3><div class="tags"><span>SQL</span><span>DSA</span><span>OS</span><span>CN</span></div></div>
+    <div class="card"><h3>Tools</h3><div class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>Docker</span></div></div>
+    <div class="card"><h3>Soft skills</h3><div class="tags"><span>Problem solving</span><span>Time management</span><span>Leadership</span></div></div>
+  </div>
+</section>
+
+<section id="achievements" class="reveal">
+  <h2>Achievements & Certifications</h2>
+  <div class="card lc" id="lc-card">
+    <div class="row"><h3>LeetCode stats</h3><a class="muted" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">@Anant_goyal2907</a></div>
+
+    <div class="lc-skeleton" id="lc-skeleton" aria-hidden="true">
+      <div class="lc-skel-body">
+        <div class="skel skel-total"></div>
+        <div class="skel-bars">
+          <div class="skel skel-row"></div>
+          <div class="skel skel-row"></div>
+          <div class="skel skel-row"></div>
+        </div>
+      </div>
+      <div class="skel skel-heatmap"></div>
+      <div class="skel skel-note"></div>
+    </div>
+
+    <div class="lc-content" id="lc-content" hidden>
+      <div class="lc-body">
+        <div class="lc-total"><strong id="lc-total">0</strong><span>problems solved</span></div>
+        <div class="lc-bars" id="lc-bars">
+          <div class="lc-row easy"><span>Easy</span><div class="bar"><i id="lc-easy-bar"></i></div><b id="lc-easy">0</b></div>
+          <div class="lc-row medium"><span>Medium</span><div class="bar"><i id="lc-medium-bar"></i></div><b id="lc-medium">0</b></div>
+          <div class="lc-row hard"><span>Hard</span><div class="bar"><i id="lc-hard-bar"></i></div><b id="lc-hard">0</b></div>
+        </div>
+      </div>
+
+      <div class="lc-heatmap-wrap" id="lc-heatmap-wrap" hidden>
+        <div class="lc-heatmap-meta">
+          <span id="lc-submissions">0</span> submissions in the past one year
+          <span class="lc-heatmap-stats">
+            Total active days: <strong id="lc-active-days">0</strong>
+            &nbsp;&middot;&nbsp;
+            Max streak: <strong id="lc-streak">0</strong>
+          </span>
+        </div>
+        <div class="lc-heatmap-scroll">
+          <div class="lc-heatmap" id="lc-heatmap" role="img" aria-label="LeetCode submission activity over the past year"></div>
+        </div>
+        <div class="lc-heatmap-legend">
+          <span>Less</span>
+          <i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i>
+          <span>More</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted" id="lc-note" role="status">Loading live stats...</p>
+  </div>
+  <div class="grid two">
+    <div class="card">
+      <h3>Achievements</h3>
+      <ul class="plain">
+        <li><strong>200+</strong> problems solved & 100+ active days on <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">LeetCode</a></li>
+        <li><strong>800+</strong> contributions on <a href="https://github.com/anantttt1" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Certifications</h3>
+      <ul class="plain">
+        <li><a href="https://www.hackerrank.com/certificates/ad07fe759f06" target="_blank" rel="noopener">SQL (Basic) - HackerRank</a></li>
+        <li><a href="https://rankupskills.in/verify?utm_source=chatgpt.com" target="_blank" rel="noopener">AI Rankup Certification</a></li>
+        <li>BuildCamp - AI Scalability & Google Antigravity</li>
+        <li>AI for Beginners - HP LIFE</li>
+        <li>Google Student Ambassador Program: Build Your Fest</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2>Get in touch</h2>
+  <div class="grid two">
+    <div>
+      <p>Have an opportunity, a project idea or just want to say hi? Send a message and I'll get back to you.</p>
+      <ul class="plain contact">
+        <li>Email: <a href="mailto:anantgoyal1001@gmail.com">anantgoyal1001@gmail.com</a></li>
+        <li>Phone: <a href="tel:+919286034026">+91 9286034026</a></li>
+        <li>Location: Mathura, India</li>
+      </ul>
+      <a href="assets/Anant-Goyal-Resume.pdf" download class="btn ghost">Download Resume</a>
+    </div>
+    <form id="contact-form" class="card" novalidate>
+      <label>Name<input name="name" required autocomplete="name"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn" type="submit">Send message</button>
+      <p id="form-note" class="muted" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> Anant Goyal</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
