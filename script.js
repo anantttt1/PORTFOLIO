@@ -44,14 +44,27 @@ document.getElementById('year').textContent = new Date().getFullYear();
   });
 })();
 
-// Reveal on scroll
+// Reveal on scroll — fire early so sections don't feel delayed
 const items = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.01, rootMargin: '80px 0px 80px 0px' });
   items.forEach(el => io.observe(el));
 } else { items.forEach(el => el.classList.add('show')); }
+
+// Pause heavy hero animations while scrolled away (saves GPU during project scroll)
+(function () {
+  const hero = document.getElementById('home');
+  if (!hero || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) hero.classList.remove('is-away');
+      else hero.classList.add('is-away');
+    });
+  }, { threshold: 0.08 });
+  io.observe(hero);
+})();
 
 // Contact form — length limits + safe mailto only
 (function () {
