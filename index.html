@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Anant Goyal | Portfolio</title>
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="assets/favicon-192.png" sizes="192x192" type="image/png">
@@ -53,7 +54,7 @@
       <span class="icon-moon" aria-hidden="true">&#9790;</span>
       <span class="icon-sun" aria-hidden="true">&#9788;</span>
     </button>
-    <button id="burger" aria-label="Toggle menu">&#9776;</button>
+    <button id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu">&#9776;</button>
   </div>
 </header>
 
@@ -77,9 +78,9 @@
         <a href="#contact" class="btn ghost">Get in touch</a>
       </div>
       <div class="socials">
-        <a href="https://github.com/anantttt1" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/anant-goyal-417b81372" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">LeetCode</a>
+        <a href="https://github.com/anantttt1" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/anant-goyal-417b81372" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">LeetCode</a>
       </div>
     </div>
 
@@ -97,7 +98,7 @@
         <div class="photo-aura"></div>
         <div class="photo-scan"></div>
         <div class="photo-grid"></div>
-        <img src="assets/image.png" alt="Anant Goyal portrait" />
+        <img src="assets/image.png" alt="Anant Goyal portrait" width="400" height="500" decoding="async" />
         <div class="photo-shine"></div>
         <span class="chip c1">Full-Stack</span>
         <span class="chip c2">Computer Vision</span>
@@ -126,7 +127,7 @@
   <h2>Projects</h2>
   <div class="grid three">
     <article class="card project">
-      <a class="proj-thumb" href="https://gesturebox.vercel.app/" target="_blank" rel="noopener" aria-label="Gesture Box demo">
+      <a class="proj-thumb" href="https://gesturebox.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Gesture Box demo">
         <img src="assets/gesture-box.svg" alt="Gesture Box preview" width="960" height="540" loading="lazy" />
       </a>
       <div class="row"><h3>Gesture Box</h3><span class="muted">April - May 2026</span></div>
@@ -134,12 +135,12 @@
       <p>A hand-tracking web app where you draw and move boxes in the air using pinch, two-finger and fist gestures, all running live in your browser with your webcam.</p>
       <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>MediaPipe</span></div>
       <div class="proj-actions">
-        <a class="btn small" href="https://gesturebox.vercel.app/" target="_blank" rel="noopener">Live demo</a>
-        <a class="btn small" href="https://github.com/anantttt1/GESTURE-BOX" target="_blank" rel="noopener">Code</a>
+        <a class="btn small" href="https://gesturebox.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+        <a class="btn small" href="https://github.com/anantttt1/GESTURE-BOX" target="_blank" rel="noopener noreferrer">Code</a>
       </div>
     </article>
     <article class="card project">
-      <a class="proj-thumb" href="https://gesturecanvas-omega.vercel.app/" target="_blank" rel="noopener" aria-label="Gesture Canvas demo">
+      <a class="proj-thumb" href="https://gesturecanvas-omega.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Gesture Canvas demo">
         <img src="assets/gesture-canvas.svg" alt="Gesture Canvas preview" width="960" height="540" loading="lazy" />
       </a>
       <div class="row"><h3>Gesture Canvas</h3><span class="muted">May - July 2026</span></div>
@@ -147,12 +148,12 @@
       <p>A creative drawing website that lets users draw and sketch freely using their hand movements. It offers a simple, interactive, and user-friendly experience to bring ideas to life on a digital canvas.</p>
       <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>MediaPipe</span></div>
       <div class="proj-actions">
-        <a class="btn small" href="https://gesturecanvas-omega.vercel.app/" target="_blank" rel="noopener">Live demo</a>
-        <a class="btn small" href="https://github.com/anantttt1/GestureCanvas" target="_blank" rel="noopener">Code</a>
+        <a class="btn small" href="https://gesturecanvas-omega.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+        <a class="btn small" href="https://github.com/anantttt1/GestureCanvas" target="_blank" rel="noopener noreferrer">Code</a>
       </div>
     </article>
     <article class="card project">
-      <a class="proj-thumb" href="https://endlessrunner-zeta.vercel.app/" target="_blank" rel="noopener" aria-label="Endless Runner demo">
+      <a class="proj-thumb" href="https://endlessrunner-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Endless Runner demo">
         <img src="assets/endless-runner.svg" alt="Endless Runner preview" width="960" height="540" loading="lazy" />
       </a>
       <div class="row"><h3>Endless Runner</h3><span class="muted">August - September 2026</span></div>
@@ -160,12 +161,12 @@
       <p>An endless runner prototype with player movement, obstacle avoidance, collision detection and score tracking.</p>
       <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
       <div class="proj-actions">
-        <a class="btn small" href="https://endlessrunner-zeta.vercel.app/" target="_blank" rel="noopener">Play it</a>
-        <a class="btn small" href="https://github.com/anantttt1/EndlessRunner" target="_blank" rel="noopener">Code</a>
+        <a class="btn small" href="https://endlessrunner-zeta.vercel.app/" target="_blank" rel="noopener noreferrer">Play it</a>
+        <a class="btn small" href="https://github.com/anantttt1/EndlessRunner" target="_blank" rel="noopener noreferrer">Code</a>
       </div>
     </article>
     <article class="card project">
-      <a class="proj-thumb" href="https://salesdashboard-three-ochre.vercel.app/" target="_blank" rel="noopener" aria-label="Sales Dashboard demo">
+      <a class="proj-thumb" href="https://salesdashboard-three-ochre.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Sales Dashboard demo">
         <img src="assets/sales-dashboard.svg" alt="Sales Dashboard preview" width="960" height="540" loading="lazy" />
       </a>
       <div class="row"><h3>Sales Dashboard</h3><span class="muted">September - November 2026</span></div>
@@ -173,8 +174,8 @@
       <p>A sales analytics dashboard where you load a CSV or sample data and filter by date, category and region to track revenue, orders, average order value and repeat customers through live charts.</p>
       <div class="tags"><span>Dashboard</span><span>Data Visualization</span><span>CSV</span></div>
       <div class="proj-actions">
-        <a class="btn small" href="https://salesdashboard-three-ochre.vercel.app/" target="_blank" rel="noopener">Live demo</a>
-        <a class="btn small" href="https://github.com/anantttt1/Data-Sales-Dashboard" target="_blank" rel="noopener">Code</a>
+        <a class="btn small" href="https://salesdashboard-three-ochre.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+        <a class="btn small" href="https://github.com/anantttt1/Data-Sales-Dashboard" target="_blank" rel="noopener noreferrer">Code</a>
       </div>
     </article>
   </div>
@@ -194,7 +195,7 @@
 <section id="achievements" class="reveal">
   <h2>Achievements & Certifications</h2>
   <div class="card lc" id="lc-card">
-    <div class="row"><h3>LeetCode stats</h3><a class="muted" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">@Anant_goyal2907</a></div>
+    <div class="row"><h3>LeetCode stats</h3><a class="muted" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">@Anant_goyal2907</a></div>
     <div class="lc-skeleton" id="lc-skeleton" aria-hidden="true">
       <div class="lc-skel-body">
         <div class="skel skel-total"></div>
@@ -241,15 +242,15 @@
     <div class="card">
       <h3>Achievements</h3>
       <ul class="plain">
-        <li><strong>200+</strong> problems solved & 100+ active days on <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener">LeetCode</a></li>
-        <li><strong>800+</strong> contributions on <a href="https://github.com/anantttt1" target="_blank" rel="noopener">GitHub</a></li>
+        <li><strong>200+</strong> problems solved & 100+ active days on <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">LeetCode</a></li>
+        <li><strong>800+</strong> contributions on <a href="https://github.com/anantttt1" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       </ul>
     </div>
     <div class="card">
       <h3>Certifications</h3>
       <ul class="plain">
-        <li><a href="https://www.hackerrank.com/certificates/ad07fe759f06" target="_blank" rel="noopener">SQL (Basic) - HackerRank</a></li>
-        <li><a href="https://rankupskills.in/verify?utm_source=chatgpt.com" target="_blank" rel="noopener">AI Rankup Certification</a></li>
+        <li><a href="https://www.hackerrank.com/certificates/ad07fe759f06" target="_blank" rel="noopener noreferrer">SQL (Basic) - HackerRank</a></li>
+        <li><a href="https://rankupskills.in/verify?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">AI Rankup Certification</a></li>
         <li>BuildCamp - AI Scalability & Google Antigravity</li>
         <li>AI for Beginners - HP LIFE</li>
         <li>Google Student Ambassador Program: Build Your Fest</li>
@@ -271,9 +272,9 @@
       <a href="assets/Anant-Goyal-Resume.pdf" download class="btn ghost">Download Resume</a>
     </div>
     <form id="contact-form" class="card" novalidate>
-      <label>Name<input name="name" required autocomplete="name"></label>
-      <label>Email<input name="email" type="email" required autocomplete="email"></label>
-      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <label>Name<input name="name" required autocomplete="name" maxlength="80"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email" maxlength="120"></label>
+      <label>Message<textarea name="message" rows="5" required maxlength="2000"></textarea></label>
       <button class="btn" type="submit">Send message</button>
       <p id="form-note" class="muted" role="status"></p>
     </form>
