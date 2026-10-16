@@ -8,6 +8,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   if (!btn) return;
   function current() { return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
   function apply(theme) {
+    if (theme !== 'light' && theme !== 'dark') theme = 'dark';
     root.setAttribute('data-theme', theme);
     try { localStorage.setItem('theme', theme); } catch (e) {}
     btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
@@ -23,9 +24,25 @@ document.getElementById('year').textContent = new Date().getFullYear();
 })();
 
 // Mobile menu
-const menu = document.getElementById('menu');
-document.getElementById('burger').addEventListener('click', () => menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+(function () {
+  const menu = document.getElementById('menu');
+  const burger = document.getElementById('burger');
+  if (!menu || !burger) return;
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 
 // Reveal on scroll
 const items = document.querySelectorAll('.reveal');
@@ -36,22 +53,33 @@ if ('IntersectionObserver' in window) {
   items.forEach(el => io.observe(el));
 } else { items.forEach(el => el.classList.add('show')); }
 
-// Contact form
-const OWNER_EMAIL = 'anantgoyal1001@gmail.com';
-const form = document.getElementById('contact-form');
-const note = document.getElementById('form-note');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const d = Object.fromEntries(new FormData(form));
-  if (!d.name.trim() || !/^\S+@\S+\.\S+$/.test(d.email) || !d.message.trim()) {
-    note.textContent = 'Please fill in your name, a valid email and a message.';
-    return;
-  }
-  const subject = encodeURIComponent('Portfolio message from ' + d.name.trim());
-  const body = encodeURIComponent(d.message.trim() + '\n\n- ' + d.name.trim() + ' (' + d.email.trim() + ')');
-  window.location.href = 'mailto:' + OWNER_EMAIL + '?subject=' + subject + '&body=' + body;
-  note.textContent = 'Opening your email app... if nothing opens, write to ' + OWNER_EMAIL;
-});
+// Contact form — length limits + safe mailto only
+(function () {
+  const OWNER_EMAIL = 'anantgoyal1001@gmail.com';
+  const form = document.getElementById('contact-form');
+  const note = document.getElementById('form-note');
+  if (!form || !note) return;
+  const MAX = { name: 80, email: 120, message: 2000 };
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const raw = Object.fromEntries(new FormData(form));
+    const name = String(raw.name || '').trim().slice(0, MAX.name);
+    const email = String(raw.email || '').trim().slice(0, MAX.email);
+    const message = String(raw.message || '').trim().slice(0, MAX.message);
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message) {
+      note.textContent = 'Please fill in your name, a valid email and a message.';
+      return;
+    }
+    if (message.length < 3) {
+      note.textContent = 'Message is too short.';
+      return;
+    }
+    const subject = encodeURIComponent('Portfolio message from ' + name);
+    const body = encodeURIComponent(message + '\n\n- ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:' + OWNER_EMAIL + '?subject=' + subject + '&body=' + body;
+    note.textContent = 'Opening your email app... if nothing opens, write to ' + OWNER_EMAIL;
+  });
+})();
 
 // 3D tilt + parallax
 (function () {
@@ -120,24 +148,20 @@ form.addEventListener('submit', e => {
   }
 })();
 
-// LeetCode stats
+// LeetCode stats — same-origin API + stats.json only (no third-party APIs)
 (function () {
   const USER = 'Anant_goyal2907';
   const CACHE_KEY = 'lc-stats-' + USER;
   const REFRESH_MS = 60000;
-  const COMMUNITY = [
-    'https://alfa-leetcode-api.onrender.com/' + USER + '/calendar',
-    'https://leetcode-api-faisalshohag.vercel.app/' + USER,
-    'https://alfa-leetcode-api.onrender.com/' + USER + '/solved',
-    'https://leetcode-stats-api.herokuapp.com/' + USER
-  ];
   const $ = id => document.getElementById(id);
   if (!$('lc-card')) return;
   let shown = false;
+
   function hideSkeleton() {
     const sk = $('lc-skeleton'); const content = $('lc-content');
     if (sk) sk.hidden = true; if (content) content.hidden = false;
   }
+
   function normalize(d) {
     if (!d || d.status === 'error' || d.error) return null;
     const easy = Number(d.easySolved ?? d.easy);
@@ -148,67 +172,89 @@ form.addEventListener('submit', e => {
     if (!Number.isFinite(total) || total <= 0) return null;
     let calendar = d.submissionCalendar || {};
     if (typeof calendar === 'string') { try { calendar = JSON.parse(calendar); } catch (e) { calendar = {}; } }
-    const streak = Number(d.streak ?? d.maxStreak ?? 0) || 0;
-    const totalActiveDays = Number(d.totalActiveDays ?? Object.keys(calendar).length) || 0;
-    let submissions = 0;
-    if (d.totalSubmissions && Array.isArray(d.totalSubmissions)) {
-      const all = d.totalSubmissions.find(x => x.difficulty === 'All');
-      if (all) submissions = Number(all.submissions) || 0;
+    if (!calendar || typeof calendar !== 'object' || Array.isArray(calendar)) calendar = {};
+    const clean = {};
+    for (const k of Object.keys(calendar)) {
+      if (!/^\d+$/.test(k)) continue;
+      const n = Number(calendar[k]);
+      if (Number.isFinite(n) && n >= 0 && n < 10000) clean[k] = Math.floor(n);
     }
-    if (!submissions) submissions = Object.values(calendar).reduce((s, n) => s + (Number(n) || 0), 0);
-    return { total, easy, medium, hard, streak, totalActiveDays, submissionCalendar: calendar, submissions };
+    const streak = Number(d.streak ?? d.maxStreak ?? 0) || 0;
+    const totalActiveDays = Number(d.totalActiveDays ?? Object.keys(clean).length) || 0;
+    let submissions = Object.values(clean).reduce((s, n) => s + n, 0);
+    return { total, easy, medium, hard, streak, totalActiveDays, submissionCalendar: clean, submissions };
   }
+
   function level(count) {
     if (!count) return 0; if (count <= 2) return 1; if (count <= 5) return 2; if (count <= 10) return 3; return 4;
   }
+
   function renderHeatmap(calendar, streak, activeDays, submissions) {
     const wrap = $('lc-heatmap-wrap'); const grid = $('lc-heatmap');
     if (!wrap || !grid) return;
+
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const start = new Date(today); start.setDate(start.getDate() - 364 - start.getDay());
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const totalDays = Math.round((today - start) / 86400000) + 1;
     const weeks = Math.ceil(totalDays / 7);
+
     const cells = [];
     for (let i = 0; i < weeks * 7; i++) {
       const d = new Date(start); d.setDate(start.getDate() + i);
       if (d > today) { cells.push(null); continue; }
       const ts = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 1000);
       const count = Number(calendar[String(ts)] || calendar[ts] || 0) || 0;
-      cells.push({ date: d, count, ts });
+      cells.push({ date: d, count });
     }
-    let monthHtml = '<div class="lc-heatmap-months">';
+
+    grid.replaceChildren();
+    const monthRow = document.createElement('div');
+    monthRow.className = 'lc-heatmap-months';
     let lastMonth = -1;
     for (let w = 0; w < weeks; w++) {
       const cell = cells[w * 7 + 3] || cells[w * 7];
-      if (!cell) { monthHtml += '<span style="display:inline-block;width:14px"></span>'; continue; }
-      const m = cell.date.getMonth();
-      if (m !== lastMonth) { monthHtml += '<span style="display:inline-block;width:14px">' + months[m] + '</span>'; lastMonth = m; }
-      else monthHtml += '<span style="display:inline-block;width:14px"></span>';
+      const span = document.createElement('span');
+      span.style.display = 'inline-block';
+      span.style.width = '14px';
+      if (cell) {
+        const m = cell.date.getMonth();
+        if (m !== lastMonth) { span.textContent = months[m]; lastMonth = m; }
+      }
+      monthRow.appendChild(span);
     }
-    monthHtml += '</div>';
-    let html = monthHtml;
+    grid.appendChild(monthRow);
+
     for (let i = 0; i < cells.length; i++) {
       const cell = cells[i];
-      if (!cell) { html += '<div class="cell" style="visibility:hidden"></div>'; continue; }
-      const lv = level(cell.count);
-      const label = cell.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-        + (cell.count ? ': ' + cell.count + ' submission' + (cell.count > 1 ? 's' : '') : ': no submissions');
-      html += '<div class="cell lv' + lv + '" title="' + label + '" data-count="' + cell.count + '"></div>';
+      const div = document.createElement('div');
+      div.className = 'cell';
+      if (!cell) {
+        div.style.visibility = 'hidden';
+      } else {
+        const lv = level(cell.count);
+        if (lv) div.classList.add('lv' + lv);
+        const label = cell.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+          + (cell.count ? ': ' + cell.count + ' submission' + (cell.count > 1 ? 's' : '') : ': no submissions');
+        div.title = label;
+        div.setAttribute('data-count', String(cell.count));
+      }
+      grid.appendChild(div);
     }
-    grid.innerHTML = html;
-    if ($('lc-submissions')) $('lc-submissions').textContent = submissions || Object.values(calendar).reduce((s, n) => s + (Number(n) || 0), 0);
-    if ($('lc-active-days')) $('lc-active-days').textContent = activeDays || Object.keys(calendar).length;
-    if ($('lc-streak')) $('lc-streak').textContent = streak || 0;
+
+    if ($('lc-submissions')) $('lc-submissions').textContent = String(submissions || 0);
+    if ($('lc-active-days')) $('lc-active-days').textContent = String(activeDays || 0);
+    if ($('lc-streak')) $('lc-streak').textContent = String(streak || 0);
     wrap.hidden = false;
     const scroll = wrap.querySelector('.lc-heatmap-scroll');
     if (scroll) requestAnimationFrame(() => { scroll.scrollLeft = scroll.scrollWidth; });
   }
+
   function render(s, noteText) {
     hideSkeleton();
-    $('lc-total').textContent = s.total;
+    $('lc-total').textContent = String(s.total);
     ['easy', 'medium', 'hard'].forEach(k => {
-      $('lc-' + k).textContent = s[k];
+      $('lc-' + k).textContent = String(s[k]);
       $('lc-' + k + '-bar').style.width = Math.round((s[k] / s.total) * 100) + '%';
     });
     $('lc-note').textContent = noteText;
@@ -217,19 +263,23 @@ form.addEventListener('submit', e => {
       renderHeatmap(s.submissionCalendar, s.streak, s.totalActiveDays, s.submissions);
     }
   }
+
   function get(url, ms) {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), ms);
-    return fetch(url, { signal: ctrl.signal, cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    return fetch(url, { signal: ctrl.signal, cache: 'no-store', credentials: 'same-origin' })
+      .then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
       .then(d => { const n = normalize(d); if (!n) throw new Error('bad data'); return n; })
       .finally(() => clearTimeout(t));
   }
-  function save(stats) { try { localStorage.setItem(CACHE_KEY, JSON.stringify({ stats, ts: Date.now() })); } catch (e) {} }
+
+  function save(stats) {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ stats, ts: Date.now() })); } catch (e) {}
+  }
+
   function load() {
     return get('/api/leetcode', 9000)
       .then(s => ({ s, note: 'Live from LeetCode, refreshes every minute' }))
-      .catch(() => Promise.any(COMMUNITY.map(u => get(u, 12000))).then(s => ({ s, note: 'Live from LeetCode' })))
       .catch(() => get('stats.json', 8000).then(s => ({ s, note: 'Auto-updated from LeetCode every few hours' })))
       .then(r => { render(r.s, r.note); save(r.s); })
       .catch(() => {
@@ -240,6 +290,7 @@ form.addEventListener('submit', e => {
         else { hideSkeleton(); $('lc-note').textContent = 'Live stats are unavailable right now. Open my LeetCode profile to see the latest.'; }
       });
   }
+
   load();
   setInterval(() => { if (!document.hidden) load(); }, REFRESH_MS);
 })();
