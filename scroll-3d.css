@@ -1,0 +1,91 @@
+/* ===== 3D Scroll (optional) — remove this file + scroll-3d.js to disable ===== */
+html.s3d {
+  --s3d-progress: 0;
+}
+
+/* Top progress line */
+html.s3d .s3d-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 50;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--s3d-progress, 0));
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 12px rgba(110, 231, 183, 0.45);
+  will-change: transform;
+}
+
+/* Hero depth: shrink + fade as you leave */
+html.s3d #home {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+html.s3d #home .hero-layout {
+  transform: translate3d(0, calc(var(--s3d-hero, 0) * 40px), 0)
+    scale(calc(1 - var(--s3d-hero, 0) * 0.06));
+  opacity: calc(1 - var(--s3d-hero, 0) * 0.55);
+  transition: none;
+  will-change: transform, opacity;
+}
+html.s3d #home .scene {
+  transform: translate3d(0, calc(var(--s3d-hero, 0) * 60px), 0)
+    scale(calc(1 + var(--s3d-hero, 0) * 0.08));
+  opacity: calc(1 - var(--s3d-hero, 0) * 0.7);
+}
+
+/* Cards: lift from depth on enter */
+html.s3d .s3d-card {
+  transform: translate3d(0, calc((1 - var(--s3d-in, 0)) * 28px), 0)
+    rotateX(calc((1 - var(--s3d-in, 0)) * 8deg))
+    scale(calc(0.96 + var(--s3d-in, 0) * 0.04));
+  opacity: calc(0.35 + var(--s3d-in, 0) * 0.65);
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+html.s3d .s3d-card.tilt.active {
+  /* mouse tilt wins while hovering */
+  opacity: 1;
+}
+
+/* Section titles slide with slight depth */
+html.s3d .s3d-title {
+  transform: translate3d(0, calc((1 - var(--s3d-in, 0)) * 16px), 0);
+  opacity: calc(0.4 + var(--s3d-in, 0) * 0.6);
+  will-change: transform, opacity;
+}
+
+/* Project grid slight perspective stage */
+html.s3d #projects .grid {
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+/* Mobile: softer motion */
+@media (max-width: 760px) {
+  html.s3d #home .hero-layout {
+    transform: translate3d(0, calc(var(--s3d-hero, 0) * 24px), 0)
+      scale(calc(1 - var(--s3d-hero, 0) * 0.04));
+  }
+  html.s3d .s3d-card {
+    transform: translate3d(0, calc((1 - var(--s3d-in, 0)) * 18px), 0)
+      scale(calc(0.98 + var(--s3d-in, 0) * 0.02));
+  }
+}
+
+/* Respect reduced motion — kill everything */
+@media (prefers-reduced-motion: reduce) {
+  html.s3d .s3d-progress,
+  html.s3d #home .hero-layout,
+  html.s3d #home .scene,
+  html.s3d .s3d-card,
+  html.s3d .s3d-title {
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto !important;
+  }
+  html.s3d .s3d-progress { display: none; }
+}
