@@ -134,3 +134,8 @@
   .btn.btn-primary{width:100%;justify-content:center}
   .socials a.social-btn{flex:1 1 140px;justify-content:center}
 }
+
+/* About me copy spacing */
+.about-copy{display:grid;gap:14px}
+.about-copy p{color:var(--muted);line-height:1.7}
+.about-tagline{color:var(--text)!important;margin-top:4px;font-size:1.05rem}
