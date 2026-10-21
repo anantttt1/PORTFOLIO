@@ -222,3 +222,23 @@
     overflow:hidden !important;
   }
 }
+
+/* Project card buttons — white bg, black bold text */
+.proj-actions .btn,
+.proj-actions a.btn,
+.project .proj-actions .btn.small{
+  background:#fff !important;
+  color:#050505 !important;
+  border:1.5px solid #fff !important;
+  border-radius:999px !important;
+  font-weight:800 !important;
+  box-shadow:none !important;
+}
+.proj-actions .btn:hover,
+.proj-actions a.btn:hover,
+.project .proj-actions .btn.small:hover{
+  background:#e5e5e5 !important;
+  color:#050505 !important;
+  border-color:#e5e5e5 !important;
+  text-decoration:none !important;
+}
