@@ -32,15 +32,7 @@
 <link rel="stylesheet" href="clean-ui.css">
 <link rel="stylesheet" href="intro.css">
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("pa")}catch(e){}</script>
-<script>
-  (function () {
-    try {
-      var t = localStorage.getItem('theme');
-      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-      else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
-    } catch (e) {}
-  })();
-</script>
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
 </head>
 <body>
 
@@ -62,10 +54,6 @@
     <a href="#contact" class="btn small">Get in touch</a>
   </nav>
   <div class="nav-actions">
-    <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
-      <span class="icon-moon" aria-hidden="true">&#9790;</span>
-      <span class="icon-sun" aria-hidden="true">&#9788;</span>
-    </button>
     <button id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu">&#9776;</button>
   </div>
 </header>
