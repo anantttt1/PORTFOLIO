@@ -1,24 +1,23 @@
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mobile menu
+// Mobile menu — full-screen
 (function () {
   const menu = document.getElementById('menu');
   const burger = document.getElementById('burger');
   if (!menu || !burger) return;
-  burger.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
+  const OPEN_ICON = '\u2715';
+  const CLOSE_ICON = '\u2630';
+  function setOpen(open) {
+    menu.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menu.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-  }));
+    burger.innerHTML = open ? OPEN_ICON : CLOSE_ICON;
+    document.body.classList.toggle('menu-open', open);
+  }
+  burger.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
-      menu.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
-    }
+    if (e.key === 'Escape' && menu.classList.contains('open')) setOpen(false);
   });
 })();
 
