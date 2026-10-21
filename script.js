@@ -1,28 +1,6 @@
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Theme toggle
-(function () {
-  const root = document.documentElement;
-  const btn = document.getElementById('theme-toggle');
-  if (!btn) return;
-  function current() { return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
-  function apply(theme) {
-    if (theme !== 'light' && theme !== 'dark') theme = 'dark';
-    root.setAttribute('data-theme', theme);
-    try { localStorage.setItem('theme', theme); } catch (e) {}
-    btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-  }
-  if (!root.getAttribute('data-theme')) {
-    let t = 'dark';
-    try { t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); } catch (e) {}
-    apply(t);
-  } else {
-    btn.setAttribute('aria-label', current() === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-  }
-  btn.addEventListener('click', () => apply(current() === 'light' ? 'dark' : 'light'));
-})();
-
 // Mobile menu
 (function () {
   const menu = document.getElementById('menu');
