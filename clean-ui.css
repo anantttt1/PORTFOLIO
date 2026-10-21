@@ -139,3 +139,86 @@
 .about-copy{display:grid;gap:14px}
 .about-copy p{color:var(--muted);line-height:1.7}
 .about-tagline{color:var(--text)!important;margin-top:4px;font-size:1.05rem}
+
+/* ===== Full-screen mobile menu ===== */
+@media (max-width:760px){
+  .nav{
+    z-index:100;
+  }
+  .nav nav{
+    display:none !important;
+    position:fixed !important;
+    inset:0 !important;
+    top:0 !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    width:100% !important;
+    height:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    background:#000 !important;
+    border:0 !important;
+    z-index:90;
+  }
+  .nav nav.open{
+    display:flex !important;
+  }
+  .nav nav a{
+    display:block !important;
+    width:min(90%, 360px);
+    text-align:center !important;
+    font-size:1.55rem !important;
+    font-weight:700 !important;
+    color:#fff !important;
+    padding:16px 20px !important;
+    border-radius:14px !important;
+    border:1px solid transparent !important;
+    letter-spacing:.01em;
+  }
+  .nav nav a:hover,
+  .nav nav a:active{
+    background:rgba(255,255,255,.08) !important;
+    text-decoration:none !important;
+    border-color:#333 !important;
+  }
+  .nav nav a.btn.small,
+  .nav nav a[href="#contact"].btn{
+    margin-top:12px !important;
+    width:min(90%, 360px) !important;
+    padding:16px 24px !important;
+    font-size:1.15rem !important;
+    border:1.5px solid #fff !important;
+    border-radius:999px !important;
+    background:transparent !important;
+    color:#fff !important;
+  }
+  .nav nav a.btn.small:hover{
+    background:#fff !important;
+    color:#000 !important;
+  }
+  .nav-actions{
+    position:relative;
+    z-index:110;
+  }
+  #burger{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    width:44px;height:44px;
+    font-size:1.5rem !important;
+    border-radius:10px;
+    z-index:110;
+    position:relative;
+  }
+  #burger[aria-expanded="true"]{
+    background:rgba(255,255,255,.1);
+  }
+  body.menu-open{
+    overflow:hidden !important;
+  }
+}
