@@ -284,3 +284,26 @@ if ('IntersectionObserver' in window) {
   load();
   setInterval(() => { if (!document.hidden) load(); }, REFRESH_MS);
 })();
+
+// Back to top button visibility
+(function () {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  const toggle = () => {
+    if (window.scrollY > 480) btn.classList.add('is-visible');
+    else btn.classList.remove('is-visible');
+  };
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  const link = document.getElementById('back-to-top-link');
+  if (link) {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
