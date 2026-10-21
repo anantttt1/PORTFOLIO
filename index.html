@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="photo-assemble.css">
 <link rel="stylesheet" href="scroll-3d.css">
 <link rel="stylesheet" href="clean-ui.css">
+<link rel="stylesheet" href="intro.css">
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("pa")}catch(e){}</script>
 <script>
   (function () {
@@ -41,6 +42,14 @@
 </script>
 </head>
 <body>
+
+<div id="intro-splash" role="dialog" aria-label="Welcome">
+  <div class="intro-inner">
+    <p class="intro-name">Anant Goyal</p>
+    <div class="intro-line" aria-hidden="true"></div>
+    <p class="intro-hint">Click to enter</p>
+  </div>
+</div>
 
 <header class="nav">
   <a href="#home" class="logo">AG<span>.</span></a>
@@ -298,6 +307,7 @@
   <p>&copy; <span id="year"></span> Anant Goyal</p>
 </footer>
 
+<script src="intro.js"></script>
 <script src="script.js"></script>
 <script src="scroll-3d.js"></script>
 <script src="photo-assemble.js"></script>
