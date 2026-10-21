@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
   <defs>
     <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1c1e38"/><stop offset="100%" stop-color="#282b4a"/>
+      <stop offset="0%" stop-color="#0b1222"/><stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
   </defs>
   <rect width="960" height="540" fill="url(#bg2)"/>
@@ -21,19 +21,19 @@
   <rect x="300" y="320" width="48" height="58" rx="6" fill="#4a1520" stroke="#f87171" stroke-width="2"/>
   <rect x="540" y="300" width="44" height="55" rx="6" fill="#4a1520" stroke="#f87171" stroke-width="2"/>
   <rect x="720" y="290" width="52" height="68" rx="6" fill="#4a1520" stroke="#f87171" stroke-width="2"/>
-  <circle cx="140" cy="275" r="14" fill="#a9aee0"/>
-  <rect x="128" y="288" width="24" height="36" rx="4" fill="#a9aee0"/>
-  <line x1="132" y1="324" x2="118" y2="370" stroke="#a9aee0" stroke-width="7" stroke-linecap="round"/>
-  <line x1="148" y1="324" x2="162" y2="365" stroke="#a9aee0" stroke-width="7" stroke-linecap="round"/>
-  <line x1="128" y1="300" x2="108" y2="325" stroke="#a9aee0" stroke-width="6" stroke-linecap="round"/>
-  <line x1="152" y1="300" x2="175" y2="315" stroke="#a9aee0" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="140" cy="275" r="14" fill="#5eead4"/>
+  <rect x="128" y="288" width="24" height="36" rx="4" fill="#5eead4"/>
+  <line x1="132" y1="324" x2="118" y2="370" stroke="#5eead4" stroke-width="7" stroke-linecap="round"/>
+  <line x1="148" y1="324" x2="162" y2="365" stroke="#5eead4" stroke-width="7" stroke-linecap="round"/>
+  <line x1="128" y1="300" x2="108" y2="325" stroke="#5eead4" stroke-width="6" stroke-linecap="round"/>
+  <line x1="152" y1="300" x2="175" y2="315" stroke="#5eead4" stroke-width="6" stroke-linecap="round"/>
   <line x1="20" y1="220" x2="90" y2="220" stroke="#243049" stroke-width="2"/>
   <line x1="30" y1="245" x2="110" y2="245" stroke="#243049" stroke-width="2"/>
   <line x1="15" y1="270" x2="85" y2="270" stroke="#243049" stroke-width="2"/>
-  <rect x="40" y="36" width="160" height="64" rx="12" fill="#282b4a" stroke="#243049"/>
+  <rect x="40" y="36" width="160" height="64" rx="12" fill="#0f172a" stroke="#243049"/>
   <text x="55" y="58" font-family="system-ui,sans-serif" font-size="12" fill="#93a0b8">SCORE</text>
-  <text x="55" y="86" font-family="system-ui,sans-serif" font-size="26" font-weight="700" fill="#a9aee0">12,480</text>
-  <rect x="560" y="50" width="340" height="130" rx="14" fill="#282b4a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="55" y="86" font-family="system-ui,sans-serif" font-size="26" font-weight="700" fill="#5eead4">12,480</text>
+  <rect x="560" y="50" width="340" height="130" rx="14" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="585" y="95" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#fbbf24">ENDLESS</text>
   <text x="585" y="130" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#e8ecf4">RUNNER</text>
   <text x="585" y="158" font-family="system-ui,sans-serif" font-size="14" fill="#93a0b8">3D · Dodge · Collect Gold</text>
