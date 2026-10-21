@@ -22,7 +22,7 @@
   }
 
   // Auto open after name settles
-  const t = setTimeout(finish, 2600);
+  const t = setTimeout(finish, 3200);
   splash.addEventListener('click', () => { clearTimeout(t); finish(); });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
