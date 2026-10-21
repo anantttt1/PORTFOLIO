@@ -1,41 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
   <defs>
     <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0b0f17"/><stop offset="100%" stop-color="#121826"/>
+      <stop offset="0%" stop-color="#1a0711"/><stop offset="100%" stop-color="#26101b"/>
     </linearGradient>
     <pattern id="grid4" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#1a2338" stroke-width="1"/>
+      <path d="M40 0H0V40" fill="none" stroke="#33172a" stroke-width="1"/>
     </pattern>
     <linearGradient id="area4" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#6ee7b7" stop-opacity=".35"/><stop offset="100%" stop-color="#6ee7b7" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#e8628f" stop-opacity=".35"/><stop offset="100%" stop-color="#e8628f" stop-opacity="0"/>
     </linearGradient>
   </defs>
   <rect width="960" height="540" fill="url(#bg4)"/>
   <rect width="960" height="540" fill="url(#grid4)"/>
   <!-- KPI tiles -->
   <g font-family="monospace" font-size="13">
-    <rect x="70" y="60" width="190" height="86" rx="12" fill="#121826" stroke="#6ee7b7" stroke-width="2"/>
-    <text x="88" y="90" fill="#8b98b3">NET REVENUE</text><rect x="88" y="104" width="90" height="14" rx="4" fill="#6ee7b7"/>
-    <rect x="280" y="60" width="190" height="86" rx="12" fill="#121826" stroke="#60a5fa" stroke-width="2"/>
-    <text x="298" y="90" fill="#8b98b3">ORDERS</text><rect x="298" y="104" width="70" height="14" rx="4" fill="#60a5fa"/>
-    <rect x="490" y="60" width="190" height="86" rx="12" fill="#121826" stroke="#a78bfa" stroke-width="2"/>
-    <text x="508" y="90" fill="#8b98b3">AVG ORDER</text><rect x="508" y="104" width="80" height="14" rx="4" fill="#a78bfa"/>
-    <rect x="700" y="60" width="190" height="86" rx="12" fill="#121826" stroke="#f472b6" stroke-width="2"/>
-    <text x="718" y="90" fill="#8b98b3">REPEAT RATE</text><rect x="718" y="104" width="60" height="14" rx="4" fill="#f472b6"/>
+    <rect x="70" y="60" width="190" height="86" rx="12" fill="#26101b" stroke="#e8628f" stroke-width="2"/>
+    <text x="88" y="90" fill="#c7aebb">NET REVENUE</text><rect x="88" y="104" width="90" height="14" rx="4" fill="#e8628f"/>
+    <rect x="280" y="60" width="190" height="86" rx="12" fill="#26101b" stroke="#d9a7b8" stroke-width="2"/>
+    <text x="298" y="90" fill="#c7aebb">ORDERS</text><rect x="298" y="104" width="70" height="14" rx="4" fill="#d9a7b8"/>
+    <rect x="490" y="60" width="190" height="86" rx="12" fill="#26101b" stroke="#c9a24a" stroke-width="2"/>
+    <text x="508" y="90" fill="#c7aebb">AVG ORDER</text><rect x="508" y="104" width="80" height="14" rx="4" fill="#c9a24a"/>
+    <rect x="700" y="60" width="190" height="86" rx="12" fill="#26101b" stroke="#b3125f" stroke-width="2"/>
+    <text x="718" y="90" fill="#c7aebb">REPEAT RATE</text><rect x="718" y="104" width="60" height="14" rx="4" fill="#b3125f"/>
   </g>
   <!-- revenue line chart -->
-  <rect x="70" y="170" width="540" height="300" rx="14" fill="#121826" stroke="#1f2a44" stroke-width="2"/>
+  <rect x="70" y="170" width="540" height="300" rx="14" fill="#26101b" stroke="#43202f" stroke-width="2"/>
   <path d="M95 410 L160 380 L225 395 L290 320 L355 335 L420 270 L485 285 L550 225 L585 205 L585 445 L95 445 Z" fill="url(#area4)"/>
-  <path d="M95 410 L160 380 L225 395 L290 320 L355 335 L420 270 L485 285 L550 225 L585 205" fill="none" stroke="#6ee7b7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="585" cy="205" r="7" fill="#6ee7b7"/>
+  <path d="M95 410 L160 380 L225 395 L290 320 L355 335 L420 270 L485 285 L550 225 L585 205" fill="none" stroke="#e8628f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="585" cy="205" r="7" fill="#e8628f"/>
   <!-- bar chart -->
-  <rect x="630" y="170" width="260" height="300" rx="14" fill="#121826" stroke="#1f2a44" stroke-width="2"/>
+  <rect x="630" y="170" width="260" height="300" rx="14" fill="#26101b" stroke="#43202f" stroke-width="2"/>
   <g>
-    <rect x="655" y="200" width="200" height="22" rx="6" fill="#60a5fa"/>
-    <rect x="655" y="244" width="165" height="22" rx="6" fill="#6ee7b7"/>
-    <rect x="655" y="288" width="130" height="22" rx="6" fill="#a78bfa"/>
-    <rect x="655" y="332" width="100" height="22" rx="6" fill="#f472b6"/>
+    <rect x="655" y="200" width="200" height="22" rx="6" fill="#d9a7b8"/>
+    <rect x="655" y="244" width="165" height="22" rx="6" fill="#e8628f"/>
+    <rect x="655" y="288" width="130" height="22" rx="6" fill="#c9a24a"/>
+    <rect x="655" y="332" width="100" height="22" rx="6" fill="#b3125f"/>
     <rect x="655" y="376" width="70" height="22" rx="6" fill="#fbbf24"/>
-    <rect x="655" y="420" width="45" height="22" rx="6" fill="#8b98b3"/>
+    <rect x="655" y="420" width="45" height="22" rx="6" fill="#c7aebb"/>
   </g>
 </svg>
