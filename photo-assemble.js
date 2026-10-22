@@ -11,7 +11,7 @@
   var running = false;
   var rand = function (a, b) { return a + Math.random() * (b - a); };
 
-  var COLORS = ['#7F8C8D', '#FFFFFF', '#ECF0F1', '#B4BEC2'];
+  var COLORS = ['#9a9a9a', '#ffffff', '#f2f2f2', '#cfcfcf'];
 
   function orbPhase(cb) {
     var fr = frame.getBoundingClientRect();

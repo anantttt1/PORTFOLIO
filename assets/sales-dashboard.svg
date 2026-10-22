@@ -1,40 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
   <defs>
     <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0b1222"/><stop offset="100%" stop-color="#2C3E50"/>
+      <stop offset="0%" stop-color="#0b1222"/><stop offset="100%" stop-color="#000000"/>
     </linearGradient>
     <pattern id="grid4" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#253545" stroke-width="1"/>
+      <path d="M40 0H0V40" fill="none" stroke="#0f0f0f" stroke-width="1"/>
     </pattern>
     <linearGradient id="area4" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".35"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#ffffff" stop-opacity=".35"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
   </defs>
   <rect width="960" height="540" fill="url(#bg4)"/>
   <rect width="960" height="540" fill="url(#grid4)"/>
   <!-- KPI tiles -->
   <g font-family="monospace" font-size="13">
-    <rect x="70" y="60" width="190" height="86" rx="12" fill="#2C3E50" stroke="#FFFFFF" stroke-width="2"/>
-    <text x="88" y="90" fill="#94a3b8">NET REVENUE</text><rect x="88" y="104" width="90" height="14" rx="4" fill="#FFFFFF"/>
-    <rect x="280" y="60" width="190" height="86" rx="12" fill="#2C3E50" stroke="#e2e8f0" stroke-width="2"/>
+    <rect x="70" y="60" width="190" height="86" rx="12" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+    <text x="88" y="90" fill="#94a3b8">NET REVENUE</text><rect x="88" y="104" width="90" height="14" rx="4" fill="#ffffff"/>
+    <rect x="280" y="60" width="190" height="86" rx="12" fill="#000000" stroke="#e2e8f0" stroke-width="2"/>
     <text x="298" y="90" fill="#94a3b8">ORDERS</text><rect x="298" y="104" width="70" height="14" rx="4" fill="#e2e8f0"/>
-    <rect x="490" y="60" width="190" height="86" rx="12" fill="#2C3E50" stroke="#ECF0F1" stroke-width="2"/>
-    <text x="508" y="90" fill="#94a3b8">AVG ORDER</text><rect x="508" y="104" width="80" height="14" rx="4" fill="#ECF0F1"/>
-    <rect x="700" y="60" width="190" height="86" rx="12" fill="#2C3E50" stroke="#7F8C8D" stroke-width="2"/>
-    <text x="718" y="90" fill="#94a3b8">REPEAT RATE</text><rect x="718" y="104" width="60" height="14" rx="4" fill="#7F8C8D"/>
+    <rect x="490" y="60" width="190" height="86" rx="12" fill="#000000" stroke="#f2f2f2" stroke-width="2"/>
+    <text x="508" y="90" fill="#94a3b8">AVG ORDER</text><rect x="508" y="104" width="80" height="14" rx="4" fill="#f2f2f2"/>
+    <rect x="700" y="60" width="190" height="86" rx="12" fill="#000000" stroke="#9a9a9a" stroke-width="2"/>
+    <text x="718" y="90" fill="#94a3b8">REPEAT RATE</text><rect x="718" y="104" width="60" height="14" rx="4" fill="#9a9a9a"/>
   </g>
   <!-- revenue line chart -->
-  <rect x="70" y="170" width="540" height="300" rx="14" fill="#2C3E50" stroke="#46586a" stroke-width="2"/>
+  <rect x="70" y="170" width="540" height="300" rx="14" fill="#000000" stroke="#333333" stroke-width="2"/>
   <path d="M95 410 L160 380 L225 395 L290 320 L355 335 L420 270 L485 285 L550 225 L585 205 L585 445 L95 445 Z" fill="url(#area4)"/>
-  <path d="M95 410 L160 380 L225 395 L290 320 L355 335 L420 270 L485 285 L550 225 L585 205" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="585" cy="205" r="7" fill="#FFFFFF"/>
+  <path d="M95 410 L160 380 L225 395 L290 320 L355 335 L420 270 L485 285 L550 225 L585 205" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="585" cy="205" r="7" fill="#ffffff"/>
   <!-- bar chart -->
-  <rect x="630" y="170" width="260" height="300" rx="14" fill="#2C3E50" stroke="#46586a" stroke-width="2"/>
+  <rect x="630" y="170" width="260" height="300" rx="14" fill="#000000" stroke="#333333" stroke-width="2"/>
   <g>
     <rect x="655" y="200" width="200" height="22" rx="6" fill="#e2e8f0"/>
-    <rect x="655" y="244" width="165" height="22" rx="6" fill="#FFFFFF"/>
-    <rect x="655" y="288" width="130" height="22" rx="6" fill="#ECF0F1"/>
-    <rect x="655" y="332" width="100" height="22" rx="6" fill="#7F8C8D"/>
+    <rect x="655" y="244" width="165" height="22" rx="6" fill="#ffffff"/>
+    <rect x="655" y="288" width="130" height="22" rx="6" fill="#f2f2f2"/>
+    <rect x="655" y="332" width="100" height="22" rx="6" fill="#9a9a9a"/>
     <rect x="655" y="376" width="70" height="22" rx="6" fill="#fbbf24"/>
     <rect x="655" y="420" width="45" height="22" rx="6" fill="#94a3b8"/>
   </g>
