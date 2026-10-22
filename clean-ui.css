@@ -427,28 +427,28 @@ footer .back-to-top-link:hover{
 :root,
 [data-theme="dark"]{
   --bg:#000000 !important;
-  --bg2:#0d0a07 !important;
-  --text:#fff7ea !important;
-  --muted:#b3a899 !important;
+  --bg2:#0a0a0a !important;
+  --text:#f5f5f5 !important;
+  --muted:#a3a3a3 !important;
   --accent:#FCD34D !important;
   --accent2:#FB923C !important;
   --accent3:#FFE68A !important;
-  --border:#2b2116 !important;
+  --border:#262626 !important;
   --accent-rgb:252,211,77 !important;
   --accent2-rgb:251,146,60 !important;
   --accent3-rgb:255,210,63 !important;
   --nav-bg:rgba(0,0,0,.9) !important;
-  --tag-bg:#18110a !important;
-  --bar-track:#18110a !important;
-  --heat-empty:#18110a !important;
-  --skel-base:#18110a !important;
+  --tag-bg:#161616 !important;
+  --bar-track:#161616 !important;
+  --heat-empty:#161616 !important;
+  --skel-base:#161616 !important;
   --btn-text:#000000 !important;
   --btn-shadow:#EA7A28 !important;
-  --ghost-shadow:#18110a !important;
-  --h1-shadow:0 2px 28px rgba(251,146,60,.18) !important;
+  --ghost-shadow:#161616 !important;
+  --h1-shadow:0 2px 28px rgba(251,146,60,.08) !important;
 }
 :root{--grad:linear-gradient(100deg,#FFE68A 0%,#FCD34D 38%,#FB923C 100%)}
-.card{background:#0d0a07 !important;border-color:#2b2116 !important}
+.card{background:#0a0a0a !important;border-color:#262626 !important}
 .project:hover{border-color:#FB923C !important}
 
 /* Name: ANANT white, GOYAL in yellow→orange with soft warm glow */
@@ -459,9 +459,9 @@ footer .back-to-top-link:hover{
   filter:drop-shadow(0 4px 26px rgba(251,146,60,.35));
 }
 .hero-copy::before,
-#intro-splash .intro-inner::before{-webkit-text-stroke:1px rgba(252,170,70,.10)}
+#intro-splash .intro-inner::before{-webkit-text-stroke:1px rgba(255,255,255,.06)}
 #intro-splash .intro-line{background:linear-gradient(90deg,transparent,#FCD34D,#FB923C,transparent)}
-.hero .lead{color:#b3a899 !important}
+.hero .lead{color:#a3a3a3 !important}
 .eyebrow,[data-theme="dark"] .eyebrow{color:#FCD34D !important}
 
 /* Primary buttons: yellow→orange, black bold text */
@@ -489,7 +489,7 @@ footer .back-to-top-link:hover{
 
 /* Social buttons */
 .socials a.social-btn{
-  background:#0d0a07 !important;color:#FCD34D !important;border:1.5px solid #6b4a1c !important;
+  background:#0a0a0a !important;color:#FCD34D !important;border:1.5px solid #4a3a1f !important;
 }
 .socials a.social-btn:hover{
   background:var(--grad) !important;color:#000 !important;border-color:transparent !important;
@@ -507,7 +507,7 @@ footer .back-to-top-link:hover{border-bottom-color:#FCD34D;color:#FCD34D !import
 .back-to-top{background:var(--grad) !important;color:#000 !important;box-shadow:0 8px 24px rgba(251,146,60,.4) !important}
 .hero-badge{border-color:rgba(251,146,60,.45) !important}
 .finale::before{background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(251,146,60,.14),transparent 70%) !important}
-.finale{border-top-color:#2b2116 !important}
+.finale{border-top-color:#262626 !important}
 
 /* Bigger name */
 .hero-mega{font-size:clamp(4.4rem,12vw,9rem) !important;line-height:.86 !important;letter-spacing:.025em !important}
@@ -515,3 +515,58 @@ footer .back-to-top-link:hover{border-bottom-color:#FCD34D;color:#FCD34D !import
 @media (max-width:760px){.hero-mega{font-size:clamp(4rem,21vw,6.2rem) !important}}
 #intro-splash .intro-name{font-size:clamp(4.2rem,20vw,11.5rem)}
 h1,h2,h3{letter-spacing:-.01em}
+
+/* Neutral-black look: calmer photo frame + aura (less yellow haze) */
+.photo-frame{
+  border-color:#2e2e2e !important;
+  background:linear-gradient(145deg,#141414,#0a0a0a) !important;
+  box-shadow:0 0 0 1px #1c1c1c,0 25px 60px rgba(0,0,0,.6),0 0 60px rgba(251,146,60,.07) !important;
+}
+.photo-aura{opacity:.35 !important;filter:blur(28px) !important}
+.hero-badge{border-color:#2e2e2e !important}
+
+/* ===== Less yellow tint: neutral black base, colour only on name + key buttons ===== */
+:root,
+[data-theme="dark"]{
+  --bg:#000000 !important;--bg2:#0a0a0a !important;
+  --text:#f5f5f5 !important;--muted:#a3a3a3 !important;
+  --border:#232323 !important;--tag-bg:#141414 !important;
+  --bar-track:#1a1a1a !important;--heat-empty:#141414 !important;--skel-base:#141414 !important;
+  --ghost-shadow:#141414 !important;--h1-shadow:none !important;
+}
+.card{background:#0a0a0a !important;border-color:#232323 !important}
+.project:hover{border-color:#fb923c !important}
+.eyebrow,[data-theme="dark"] .eyebrow{color:#a3a3a3 !important}
+.hero .lead{color:#a3a3a3 !important}
+.hero-badge{border-color:#2e2e2e !important}
+.finale{border-top-color:#1a1a1a !important}
+.finale::before{background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(255,255,255,.05),transparent 70%) !important}
+
+/* nav + social buttons: neutral, orange only on hover */
+.nav nav a.btn.small,.nav nav a[href="#contact"].btn,.btn.ghost{
+  color:#fff !important;border:1.5px solid #3a3a3a !important;background:transparent !important}
+.nav nav a.btn,.nav nav a.btn:hover{color:#fff !important}
+.nav nav a.btn.small:hover,.btn.ghost:hover{border-color:#fb923c !important;background:rgba(255,255,255,.05) !important;color:#fff !important}
+.nav nav a:not(.btn):hover,[data-theme="dark"] a:hover{color:#fff}
+.socials a.social-btn{background:#0a0a0a !important;color:#fff !important;border:1.5px solid #333 !important}
+.socials a.social-btn:hover{color:#000 !important}
+footer .back-to-top-link{border-bottom-color:rgba(255,255,255,.35)}
+footer .back-to-top-link:hover{border-bottom-color:#fff;color:#fff !important}
+.card .plain li a[href^="http"]{text-decoration-color:rgba(255,255,255,.5)}
+.card .plain li a[href^="http"]::after{color:#fb923c}
+.card .plain li a[href^="http"]:hover{text-decoration-color:#fff;background:rgba(255,255,255,.08)}
+
+/* name: keep the gradient but drop the big warm glow */
+.name-hot{filter:none}
+.hero-copy::before,#intro-splash .intro-inner::before{-webkit-text-stroke:1px rgba(255,255,255,.06)}
+#intro-splash .intro-line{background:linear-gradient(90deg,transparent,#fff,transparent)}
+
+/* photo area: tone down yellow glow/rings */
+.photo-aura{opacity:.25}
+.photo-frame{border-color:rgba(255,255,255,.14) !important;background:#0a0a0a !important;box-shadow:0 18px 40px rgba(0,0,0,.6) !important}
+.photo-frame::before{border-color:rgba(255,255,255,.1) !important;box-shadow:none !important}
+.photo-frame::after{border-color:rgba(255,255,255,.1) !important}
+.orbit-ring.r1,.orbit-ring.r2,.orbit-ring.r3{opacity:.35}
+.photo-grid{opacity:.5}
+.photo-scan{opacity:.5}
+.orbit-dot,.orbit-dot.d1,.orbit-dot.d2,.orbit-dot.d3{background:#fff !important;box-shadow:0 0 10px rgba(255,255,255,.5) !important}
