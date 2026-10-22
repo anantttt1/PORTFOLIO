@@ -293,10 +293,25 @@ footer .back-to-top-link:hover{
   color:#050505 !important;
 }
 
-/* ===== Hero mega name (reference style) ===== */
+/* ===== Hero mega name — full-page cover, Anton ===== */
+#home.hero{
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  align-items:center;
+  padding-top:72px;
+  padding-bottom:48px;
+  overflow:hidden;
+}
+.hero-layout{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  align-items:center !important;
+}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  margin:0 0 18px;
+  margin:0 0 14px;
   padding:8px 14px;
   border:1px solid #333;
   border-radius:999px;
@@ -316,15 +331,17 @@ footer .back-to-top-link:hover{
   50%{box-shadow:0 0 0 6px rgba(239,68,68,.08)}
 }
 .hero-mega{
-  font-family:"Bebas Neue",Impact,"Arial Narrow",sans-serif !important;
+  font-family:"Anton",Impact,"Arial Black",sans-serif !important;
   font-weight:400 !important;
-  font-size:clamp(3.6rem,14vw,7.6rem) !important;
-  line-height:.88 !important;
-  letter-spacing:.03em !important;
+  font-size:clamp(4.5rem,18vw,10.5rem) !important;
+  line-height:.82 !important;
+  letter-spacing:.02em !important;
   text-transform:uppercase;
-  color:#f5f5f0 !important;
-  margin:0 0 16px !important;
+  color:#f7f7f2 !important;
+  margin:0 0 18px !important;
   text-shadow:none !important;
+  width:100%;
+  max-width:none;
 }
 .hero-mega .mega-line{
   display:block;
@@ -332,37 +349,48 @@ footer .back-to-top-link:hover{
 .hero-tagline{
   font-family:"Space Grotesk",Inter,system-ui,sans-serif;
   font-weight:700;
-  font-size:clamp(1.15rem,2.6vw,1.55rem);
-  line-height:1.3;
+  font-size:clamp(1.2rem,2.8vw,1.7rem);
+  line-height:1.25;
   color:#fff;
   margin:0 0 12px;
+  max-width:18em;
 }
 .hero .lead{
-  max-width:34em;
+  max-width:32em;
   color:#a3a3a3 !important;
   margin-bottom:22px;
+  font-size:1.02rem;
 }
-/* ghost outline behind mega name */
-.hero-copy{position:relative}
-.hero-copy::before{
+/* Full-bleed ghost name across hero */
+.hero-copy{position:relative;z-index:1}
+#home.hero::after{
   content:"ANANT GOYAL";
   position:absolute;
-  left:-2%;top:8%;
-  font-family:"Bebas Neue",Impact,sans-serif;
-  font-size:clamp(5rem,22vw,12rem);
-  line-height:.85;
-  letter-spacing:.02em;
+  left:50%;
+  top:52%;
+  transform:translate(-50%,-50%);
+  font-family:"Anton",Impact,sans-serif;
+  font-size:clamp(6rem,28vw,18rem);
+  line-height:.8;
+  letter-spacing:.01em;
   color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.06);
+  -webkit-text-stroke:1.5px rgba(255,255,255,.055);
   white-space:nowrap;
   pointer-events:none;
   z-index:0;
+  width:100%;
+  text-align:center;
 }
-.hero-copy > *{position:relative;z-index:1}
+.hero-copy::before{display:none !important}
+.hero-layout,.hero-copy,.profile-box{position:relative;z-index:1}
 
+@media (max-width:900px){
+  .hero-mega{font-size:clamp(3.8rem,20vw,7rem)!important}
+  #home.hero::after{font-size:clamp(5rem,30vw,10rem);opacity:.7}
+}
 @media (max-width:760px){
-  .hero-mega{font-size:clamp(3.2rem,18vw,5.2rem)!important}
-  .hero-copy::before{opacity:.5;top:4%}
+  .hero-mega{font-size:clamp(3.4rem,22vw,5.5rem)!important}
+  #home.hero{min-height:auto;padding-top:88px}
 }
 
 /* ===== Finale closing section ===== */
@@ -389,7 +417,7 @@ footer .back-to-top-link:hover{
   font-weight:600;
 }
 .finale-title{
-  font-family:"Bebas Neue",Impact,sans-serif !important;
+  font-family:"Anton",Impact,sans-serif !important;
   font-weight:400 !important;
   font-size:clamp(2.8rem,12vw,6.5rem) !important;
   line-height:.9 !important;
