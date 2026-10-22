@@ -408,3 +408,17 @@ footer .back-to-top-link:hover{
   display:flex;flex-wrap:wrap;gap:12px;
   justify-content:center;
 }
+
+/* Clearly clickable links in Achievements / Certifications */
+.card .plain li a[href^="http"]{
+  color:#fff !important;font-weight:600;
+  text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px;
+  text-decoration-color:rgba(255,255,255,.55);
+  border-radius:4px;transition:text-decoration-color .15s,background .15s;
+}
+.card .plain li a[href^="http"]::after{
+  content:" ↗";font-weight:700;opacity:.8;display:inline-block;transition:transform .15s;
+}
+.card .plain li a[href^="http"]:hover{text-decoration-color:#fff;background:rgba(255,255,255,.08)}
+.card .plain li a[href^="http"]:hover::after{transform:translate(2px,-2px);opacity:1}
+.card .plain li a[href^="http"]:focus-visible{outline:2px solid #fff;outline-offset:3px}
