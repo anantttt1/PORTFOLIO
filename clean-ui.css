@@ -1,35 +1,35 @@
 /* Clean black mock UI + bold contact — optional polish layer */
 :root,
 [data-theme="dark"]{
-  --bg:#050505 !important;
-  --bg2:#111111 !important;
-  --text:#f5f5f5 !important;
-  --muted:#a3a3a3 !important;
+  --bg:#2C3E50 !important;
+  --bg2:#253545 !important;
+  --text:#ECF0F1 !important;
+  --muted:#B4BEC2 !important;
   --accent:#ffffff !important;
   --accent2:#e5e5e5 !important;
-  --accent3:#d4d4d4 !important;
-  --border:#262626 !important;
+  --accent3:#ECF0F1 !important;
+  --border:#46586a !important;
   --accent-rgb:255,255,255 !important;
   --accent2-rgb:229,229,229 !important;
   --accent3-rgb:212,212,212 !important;
-  --nav-bg:rgba(5,5,5,.9) !important;
-  --tag-bg:#1a1a1a !important;
-  --bar-track:#1a1a1a !important;
-  --heat-empty:#1a1a1a !important;
-  --skel-base:#1a1a1a !important;
-  --btn-text:#050505 !important;
-  --btn-shadow:#404040 !important;
-  --ghost-shadow:#1a1a1a !important;
+  --nav-bg:rgba(44,62,80,.9) !important;
+  --tag-bg:#34495e !important;
+  --bar-track:#34495e !important;
+  --heat-empty:#34495e !important;
+  --skel-base:#34495e !important;
+  --btn-text:#2C3E50 !important;
+  --btn-shadow:#7F8C8D !important;
+  --ghost-shadow:#1f2d3a !important;
   --h1-shadow:0 2px 24px rgba(255,255,255,.1) !important;
 }
 
-[data-theme="dark"] body{background:#050505}
+[data-theme="dark"] body{background:#2C3E50}
 [data-theme="dark"] .hero h1{
   color:#fff;font-weight:700;letter-spacing:-.02em;
   text-shadow:0 2px 40px rgba(255,255,255,.08);
 }
-[data-theme="dark"] .eyebrow{color:#a3a3a3;font-weight:500}
-[data-theme="dark"] .role{color:#d4d4d4}
+[data-theme="dark"] .eyebrow{color:#B4BEC2;font-weight:500}
+[data-theme="dark"] .role{color:#ECF0F1}
 [data-theme="dark"] a{color:#fff}
 [data-theme="dark"] a:hover{color:#e5e5e5}
 
@@ -42,7 +42,7 @@
 .btn:hover,.btn:active{box-shadow:none !important}
 .btn.btn-primary{
   display:inline-flex !important;align-items:center;gap:10px;
-  background:#fff !important;color:#050505 !important;
+  background:#fff !important;color:#2C3E50 !important;
   padding:14px 26px !important;font-size:1rem !important;font-weight:800 !important;
   border:1.5px solid #fff !important;border-radius:999px !important;
 }
@@ -50,7 +50,7 @@
 .btn.btn-primary svg{width:18px;height:18px}
 .btn.ghost{
   background:transparent !important;color:#fff !important;
-  border:1.5px solid #404040 !important;border-radius:999px !important;font-weight:700 !important;
+  border:1.5px solid #5c6f80 !important;border-radius:999px !important;font-weight:700 !important;
 }
 .btn.ghost:hover{border-color:#fff !important;background:rgba(255,255,255,.06) !important}
 .btn.small{border-radius:999px !important;font-weight:700 !important}
@@ -58,7 +58,7 @@
 .nav nav a.btn.small,
 .nav nav a[href="#contact"].btn{
   background:transparent !important;color:#fff !important;
-  border:1.5px solid #404040 !important;padding:8px 16px !important;
+  border:1.5px solid #5c6f80 !important;padding:8px 16px !important;
   border-radius:999px !important;font-weight:700 !important;
 }
 .nav nav a.btn.small:hover{
@@ -69,12 +69,12 @@
 .socials a.social-btn{
   display:inline-flex !important;align-items:center;gap:10px;
   padding:11px 18px !important;border-radius:999px !important;
-  border:1.5px solid #333 !important;background:#0a0a0a !important;color:#fff !important;
+  border:1.5px solid #46586a !important;background:#253545 !important;color:#fff !important;
   font-weight:700 !important;font-size:.95rem !important;box-shadow:none !important;
 }
 .socials a.social-btn svg{width:18px;height:18px;fill:currentColor}
 .socials a.social-btn:hover{
-  border-color:#fff !important;background:#111 !important;
+  border-color:#fff !important;background:#253545 !important;
   transform:translateY(-1px);text-decoration:none;
 }
 
@@ -87,8 +87,8 @@
     linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px) !important;
 }
 
-.card{background:#111 !important;border-color:#262626 !important;border-radius:16px}
-.project:hover{border-color:#525252 !important}
+.card{background:#253545 !important;border-color:#46586a !important;border-radius:16px}
+.project:hover{border-color:#7F8C8D !important}
 
 /* Soft photo frame */
 .orbit-ring{opacity:.3}
@@ -97,13 +97,13 @@
 .photo-frame{
   border-radius:20px !important;
   border:1px solid rgba(255,255,255,.18) !important;
-  background:rgba(20,20,20,.92) !important;
+  background:rgba(37,53,69,.92) !important;
   box-shadow:0 20px 50px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06) !important;
 }
 .chip{
-  background:rgba(20,20,20,.92) !important;
+  background:rgba(37,53,69,.92) !important;
   border:1px solid rgba(255,255,255,.2) !important;
-  color:#f5f5f5 !important;font-weight:600;
+  color:#ECF0F1 !important;font-weight:600;
 }
 
 /* ===== Contact — everything bold ===== */
@@ -123,7 +123,7 @@
 #contact form label{font-weight:700 !important;color:var(--text) !important}
 #contact form button.btn{
   font-weight:800 !important;border-radius:999px !important;
-  background:#fff !important;color:#050505 !important;
+  background:#fff !important;color:#2C3E50 !important;
 }
 #contact form button.btn:hover{background:#e5e5e5 !important}
 #contact .btn.btn-primary{font-weight:800 !important}
@@ -161,7 +161,7 @@
     align-items:center !important;
     justify-content:center !important;
     gap:8px !important;
-    background:#000 !important;
+    background:#2C3E50 !important;
     border:0 !important;
     z-index:90;
   }
@@ -184,7 +184,7 @@
   .nav nav a:active{
     background:rgba(255,255,255,.08) !important;
     text-decoration:none !important;
-    border-color:#333 !important;
+    border-color:#46586a !important;
   }
   .nav nav a.btn.small,
   .nav nav a[href="#contact"].btn{
@@ -199,7 +199,7 @@
   }
   .nav nav a.btn.small:hover{
     background:#fff !important;
-    color:#000 !important;
+    color:#2C3E50 !important;
   }
   .nav-actions{
     position:relative;
@@ -228,7 +228,7 @@
 .proj-actions a.btn,
 .project .proj-actions .btn.small{
   background:#fff !important;
-  color:#050505 !important;
+  color:#2C3E50 !important;
   border:1.5px solid #fff !important;
   border-radius:999px !important;
   font-weight:800 !important;
@@ -238,7 +238,7 @@
 .proj-actions a.btn:hover,
 .project .proj-actions .btn.small:hover{
   background:#e5e5e5 !important;
-  color:#050505 !important;
+  color:#2C3E50 !important;
   border-color:#e5e5e5 !important;
   text-decoration:none !important;
 }
@@ -273,7 +273,7 @@ footer .back-to-top-link:hover{
   display:flex;align-items:center;justify-content:center;
   border-radius:999px;
   background:#fff;
-  color:#050505 !important;
+  color:#2C3E50 !important;
   font-size:1.25rem;
   font-weight:800;
   text-decoration:none !important;
@@ -290,7 +290,7 @@ footer .back-to-top-link:hover{
 }
 .back-to-top:hover{
   background:#e5e5e5;
-  color:#050505 !important;
+  color:#2C3E50 !important;
 }
 
 /* ===== Hero mega name (reference style) ===== */
@@ -298,11 +298,11 @@ footer .back-to-top-link:hover{
   display:inline-flex;align-items:center;gap:8px;
   margin:0 0 18px;
   padding:8px 14px;
-  border:1px solid #333;
+  border:1px solid #46586a;
   border-radius:999px;
   font-size:.82rem;
   font-weight:600;
-  color:#d4d4d4;
+  color:#ECF0F1;
   background:rgba(255,255,255,.03);
 }
 .hero-badge .dot{
@@ -339,7 +339,7 @@ footer .back-to-top-link:hover{
 }
 .hero .lead{
   max-width:34em;
-  color:#a3a3a3 !important;
+  color:#B4BEC2 !important;
   margin-bottom:22px;
 }
 /* ghost outline behind mega name */
@@ -371,7 +371,7 @@ footer .back-to-top-link:hover{
   padding:100px 24px 80px;
   position:relative;
   overflow:hidden;
-  border-top:1px solid #1a1a1a;
+  border-top:1px solid #34495e;
 }
 .finale::before{
   content:"";
@@ -401,7 +401,7 @@ footer .back-to-top-link:hover{
   font-family:"Space Grotesk",Inter,sans-serif;
   font-weight:700;
   font-size:clamp(1rem,2.4vw,1.25rem);
-  color:#a3a3a3;
+  color:#B4BEC2;
   margin:0 0 28px;
 }
 .finale-cta{
