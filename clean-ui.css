@@ -422,3 +422,89 @@ footer .back-to-top-link:hover{
 .card .plain li a[href^="http"]:hover{text-decoration-color:#fff;background:rgba(255,255,255,.08)}
 .card .plain li a[href^="http"]:hover::after{transform:translate(2px,-2px);opacity:1}
 .card .plain li a[href^="http"]:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* ===== Black + Dark Orange + Yellow theme ===== */
+:root,
+[data-theme="dark"]{
+  --bg:#000000 !important;
+  --bg2:#0d0a07 !important;
+  --text:#fff7ea !important;
+  --muted:#b3a899 !important;
+  --accent:#FFB300 !important;
+  --accent2:#F97316 !important;
+  --accent3:#FFD23F !important;
+  --border:#2b2116 !important;
+  --accent-rgb:255,179,0 !important;
+  --accent2-rgb:249,115,22 !important;
+  --accent3-rgb:255,210,63 !important;
+  --nav-bg:rgba(0,0,0,.9) !important;
+  --tag-bg:#18110a !important;
+  --bar-track:#18110a !important;
+  --heat-empty:#18110a !important;
+  --skel-base:#18110a !important;
+  --btn-text:#000000 !important;
+  --btn-shadow:#C2410C !important;
+  --ghost-shadow:#18110a !important;
+  --h1-shadow:0 2px 28px rgba(249,115,22,.18) !important;
+}
+:root{--grad:linear-gradient(100deg,#FFD23F 0%,#FFB300 38%,#F97316 100%)}
+.card{background:#0d0a07 !important;border-color:#2b2116 !important}
+.project:hover{border-color:#F97316 !important}
+
+/* Name: ANANT white, GOYAL in yellow→orange with soft warm glow */
+.name-hot{
+  background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent !important;
+  filter:drop-shadow(0 4px 26px rgba(249,115,22,.35));
+}
+.hero-copy::before,
+#intro-splash .intro-inner::before{-webkit-text-stroke:1px rgba(255,150,40,.10)}
+#intro-splash .intro-line{background:linear-gradient(90deg,transparent,#FFB300,#F97316,transparent)}
+.hero .lead{color:#b3a899 !important}
+.eyebrow,[data-theme="dark"] .eyebrow{color:#FFB300 !important}
+
+/* Primary buttons: yellow→orange, black bold text */
+.btn.btn-primary,
+.proj-actions .btn,.proj-actions a.btn,.project .proj-actions .btn.small,
+#contact .btn.btn-primary{
+  background:var(--grad) !important;color:#000 !important;
+  border:0 !important;font-weight:800 !important;
+  box-shadow:0 8px 24px rgba(249,115,22,.28) !important;
+}
+.btn.btn-primary:hover,
+.proj-actions .btn:hover,.proj-actions a.btn:hover,.project .proj-actions .btn.small:hover{
+  background:linear-gradient(100deg,#FFE066,#FFC21A 40%,#FB8A3C) !important;color:#000 !important;
+  transform:translateY(-2px);box-shadow:0 12px 30px rgba(249,115,22,.42) !important;
+}
+.btn.ghost,.nav nav a.btn.small,.nav nav a[href="#contact"].btn{
+  background:transparent !important;color:#FFB300 !important;
+  border:1.5px solid #F97316 !important;font-weight:800 !important;
+}
+.btn.ghost:hover,.nav nav a.btn.small:hover{
+  background:rgba(249,115,22,.14) !important;border-color:#FFB300 !important;color:#FFD23F !important;
+}
+.nav nav a.btn,.nav nav a.btn:hover{color:#FFB300 !important}
+.nav nav a:not(.btn):hover{color:#FFB300 !important}
+
+/* Social buttons */
+.socials a.social-btn{
+  background:#0d0a07 !important;color:#FFB300 !important;border:1.5px solid #5a3a14 !important;
+}
+.socials a.social-btn:hover{
+  background:var(--grad) !important;color:#000 !important;border-color:transparent !important;
+  box-shadow:0 8px 22px rgba(249,115,22,.35) !important;
+}
+
+/* Links, hero badge, back to top */
+[data-theme="dark"] a:hover{color:#FFB300}
+.card .plain li a[href^="http"]{text-decoration-color:rgba(255,179,0,.6)}
+.card .plain li a[href^="http"]::after{color:#F97316}
+.card .plain li a[href^="http"]:hover{text-decoration-color:#FFB300;background:rgba(255,179,0,.1)}
+.card .plain li a[href^="http"]:focus-visible,.btn:focus-visible,a:focus-visible{outline:2px solid #FFB300 !important}
+footer .back-to-top-link{border-bottom-color:rgba(255,179,0,.5)}
+footer .back-to-top-link:hover{border-bottom-color:#FFB300;color:#FFB300 !important}
+.back-to-top{background:var(--grad) !important;color:#000 !important;box-shadow:0 8px 24px rgba(249,115,22,.4) !important}
+.hero-badge{border-color:rgba(249,115,22,.45) !important}
+.finale::before{background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(249,115,22,.14),transparent 70%) !important}
+.finale{border-top-color:#2b2116 !important}
