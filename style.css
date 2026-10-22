@@ -30,10 +30,10 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.65;transition:background .25s,color .25s}
+body{background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif;line-height:1.65;transition:background .25s,color .25s}
 a{color:var(--accent2);text-decoration:none}
 a:hover{text-decoration:underline}
-h1,h2,h3,.logo{font-family:"Space Grotesk",Inter,sans-serif}
+h1,h2,h3,.logo{font-family:Sora,"Plus Jakarta Sans",sans-serif}
 
 .nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;
   padding:14px 24px;background:var(--nav-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
@@ -113,7 +113,7 @@ footer{text-align:center;color:var(--muted);padding:50px 0 30px;font-size:.9rem}
 
 .lc{margin-bottom:20px}
 .lc-body{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin:14px 0 6px}
-.lc-total strong{display:block;font-family:"Space Grotesk",Inter,sans-serif;font-size:3rem;line-height:1;color:var(--accent)}
+.lc-total strong{display:block;font-family:Sora,"Plus Jakarta Sans",sans-serif;font-size:3rem;line-height:1;color:var(--accent)}
 .lc-total span{color:var(--muted);font-size:.9rem}
 .lc-bars{display:grid;gap:12px}
 .lc-row{display:grid;grid-template-columns:64px 1fr 44px;gap:12px;align-items:center;font-size:.9rem}

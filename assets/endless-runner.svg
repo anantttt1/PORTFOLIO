@@ -21,18 +21,18 @@
   <rect x="300" y="320" width="48" height="58" rx="6" fill="#4a1520" stroke="#f87171" stroke-width="2"/>
   <rect x="540" y="300" width="44" height="55" rx="6" fill="#4a1520" stroke="#f87171" stroke-width="2"/>
   <rect x="720" y="290" width="52" height="68" rx="6" fill="#4a1520" stroke="#f87171" stroke-width="2"/>
-  <circle cx="140" cy="275" r="14" fill="#FFB300"/>
-  <rect x="128" y="288" width="24" height="36" rx="4" fill="#FFB300"/>
-  <line x1="132" y1="324" x2="118" y2="370" stroke="#FFB300" stroke-width="7" stroke-linecap="round"/>
-  <line x1="148" y1="324" x2="162" y2="365" stroke="#FFB300" stroke-width="7" stroke-linecap="round"/>
-  <line x1="128" y1="300" x2="108" y2="325" stroke="#FFB300" stroke-width="6" stroke-linecap="round"/>
-  <line x1="152" y1="300" x2="175" y2="315" stroke="#FFB300" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="140" cy="275" r="14" fill="#FCD34D"/>
+  <rect x="128" y="288" width="24" height="36" rx="4" fill="#FCD34D"/>
+  <line x1="132" y1="324" x2="118" y2="370" stroke="#FCD34D" stroke-width="7" stroke-linecap="round"/>
+  <line x1="148" y1="324" x2="162" y2="365" stroke="#FCD34D" stroke-width="7" stroke-linecap="round"/>
+  <line x1="128" y1="300" x2="108" y2="325" stroke="#FCD34D" stroke-width="6" stroke-linecap="round"/>
+  <line x1="152" y1="300" x2="175" y2="315" stroke="#FCD34D" stroke-width="6" stroke-linecap="round"/>
   <line x1="20" y1="220" x2="90" y2="220" stroke="#243049" stroke-width="2"/>
   <line x1="30" y1="245" x2="110" y2="245" stroke="#243049" stroke-width="2"/>
   <line x1="15" y1="270" x2="85" y2="270" stroke="#243049" stroke-width="2"/>
   <rect x="40" y="36" width="160" height="64" rx="12" fill="#000000" stroke="#243049"/>
   <text x="55" y="58" font-family="system-ui,sans-serif" font-size="12" fill="#93a0b8">SCORE</text>
-  <text x="55" y="86" font-family="system-ui,sans-serif" font-size="26" font-weight="700" fill="#FFB300">12,480</text>
+  <text x="55" y="86" font-family="system-ui,sans-serif" font-size="26" font-weight="700" fill="#FCD34D">12,480</text>
   <rect x="560" y="50" width="340" height="130" rx="14" fill="#000000" stroke="#fbbf24" stroke-width="2"/>
   <text x="585" y="95" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#fbbf24">ENDLESS</text>
   <text x="585" y="130" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#e8ecf4">RUNNER</text>

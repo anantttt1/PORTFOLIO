@@ -54,7 +54,7 @@
   position:relative;z-index:1;
   margin:22px auto 0;
   max-width:22em;
-  font-family:"Space Grotesk",Inter,system-ui,sans-serif;
+  font-family:Sora,"Plus Jakarta Sans",system-ui,sans-serif;
   font-weight:700;
   font-size:clamp(0.95rem,2.8vw,1.35rem);
   line-height:1.35;
@@ -66,7 +66,7 @@
 }
 #intro-splash .intro-hint{
   margin-top:28px;
-  font-family:Inter,system-ui,sans-serif;
+  font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif;
   font-size:.72rem;
   letter-spacing:.2em;
   text-transform:uppercase;

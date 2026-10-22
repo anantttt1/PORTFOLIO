@@ -11,8 +11,8 @@
   <rect width="960" height="540" fill="url(#grid3)"/>
   <g>
     <rect x="148" y="148" width="120" height="100" rx="10" fill="#0a0e16"/>
-    <rect x="140" y="140" width="120" height="100" rx="10" fill="#000000" stroke="#FFB300" stroke-width="2.5"/>
-    <circle cx="200" cy="190" r="5" fill="#FFB300"/>
+    <rect x="140" y="140" width="120" height="100" rx="10" fill="#000000" stroke="#FCD34D" stroke-width="2.5"/>
+    <circle cx="200" cy="190" r="5" fill="#FCD34D"/>
   </g>
   <g>
     <rect x="358" y="208" width="140" height="110" rx="10" fill="#0a0e16"/>
@@ -21,20 +21,20 @@
   </g>
   <g>
     <rect x="558" y="128" width="100" height="90" rx="10" fill="#0a0e16"/>
-    <rect x="550" y="120" width="100" height="90" rx="10" fill="#000000" stroke="#FFD23F" stroke-width="2.5"/>
-    <circle cx="600" cy="165" r="5" fill="#FFD23F"/>
+    <rect x="550" y="120" width="100" height="90" rx="10" fill="#000000" stroke="#FFE68A" stroke-width="2.5"/>
+    <circle cx="600" cy="165" r="5" fill="#FFE68A"/>
   </g>
   <g>
     <rect x="268" y="328" width="110" height="95" rx="10" fill="#0a0e16"/>
-    <rect x="260" y="320" width="110" height="95" rx="10" fill="#000000" stroke="#F97316" stroke-width="2.5"/>
-    <circle cx="315" cy="367" r="5" fill="#F97316"/>
+    <rect x="260" y="320" width="110" height="95" rx="10" fill="#000000" stroke="#FB923C" stroke-width="2.5"/>
+    <circle cx="315" cy="367" r="5" fill="#FB923C"/>
   </g>
   <g>
     <rect x="508" y="348" width="130" height="100" rx="10" fill="#0a0e16"/>
     <rect x="500" y="340" width="130" height="100" rx="10" fill="#000000" stroke="#fbbf24" stroke-width="2.5"/>
     <circle cx="565" cy="390" r="5" fill="#fbbf24"/>
   </g>
-  <circle cx="720" cy="260" r="5" fill="#FFB300"/>
+  <circle cx="720" cy="260" r="5" fill="#FCD34D"/>
   <circle cx="745" cy="235" r="4" fill="#e2e8f0"/>
   <circle cx="765" cy="210" r="4" fill="#e2e8f0"/>
   <circle cx="780" cy="190" r="4" fill="#e2e8f0"/>
