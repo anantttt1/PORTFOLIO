@@ -47,7 +47,7 @@
 }
 #intro-splash .intro-line{
   width:0;height:2px;margin:20px auto 0;
-  background:linear-gradient(90deg,transparent,#fff,transparent);
+  background:linear-gradient(90deg,transparent,#e6e6e6,transparent);
   animation:introLine 0.85s ease .8s forwards;
 }
 #intro-splash .intro-punch{
@@ -59,7 +59,7 @@
   font-size:clamp(0.95rem,2.8vw,1.35rem);
   line-height:1.35;
   letter-spacing:.02em;
-  color:#fff;
+  color:#e6e6e6;
   opacity:0;
   transform:translateY(10px);
   animation:introFadeUp .7s ease 1.15s forwards;
