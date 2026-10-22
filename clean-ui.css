@@ -608,3 +608,72 @@ a:focus-visible,.btn:focus-visible{outline:2px solid #FF3B24 !important}
 #intro-splash{background:#080809}
 #intro-splash .intro-line{background:linear-gradient(90deg,transparent,#FF3B24,transparent)}
 .name-hot{background:none !important;-webkit-text-fill-color:#FF3B24 !important;color:#FF3B24 !important}
+
+/* ===== Mixture: blackish + red-orange blended across the whole site ===== */
+:root,[data-theme="dark"]{
+  --bg:#0a0606 !important;--bg2:#140a08 !important;--text:#f1e7e4 !important;--muted:#b09a95 !important;
+  --border:#2e1713 !important;--tag-bg:#1d0e0b !important;--bar-track:#241210 !important;
+  --heat-empty:#1d0e0b !important;--skel-base:#1d0e0b !important;--nav-bg:rgba(10,6,6,.9) !important;
+}
+body,[data-theme="dark"] body{
+  background:
+    radial-gradient(1000px 620px at 88% 0%,rgba(255,59,36,.20),transparent 62%),
+    radial-gradient(800px 560px at -6% 38%,rgba(255,90,40,.11),transparent 62%),
+    radial-gradient(900px 600px at 105% 78%,rgba(255,59,36,.13),transparent 62%),
+    #0a0606 !important;
+}
+section,.finale{background:linear-gradient(180deg,transparent 0%,rgba(255,59,36,.05) 55%,transparent 100%)}
+.hero{background:none}
+.nav{background:rgba(10,6,6,.88) !important;border-bottom-color:#2e1713 !important}
+
+/* cards: black with a red-orange tint */
+.card{
+  background:linear-gradient(145deg,#1b0c09 0%,#0e0707 55%,#150907 100%) !important;
+  border:1px solid rgba(255,59,36,.20) !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,120,90,.06) !important;
+}
+.project:hover,.card:hover{border-color:rgba(255,59,36,.55) !important}
+.tag,.chip,.hero-badge{background:#1d0e0b !important;border-color:rgba(255,59,36,.28) !important;color:#f1e7e4 !important}
+
+/* name */
+.hero-mega{color:#f1e7e4 !important}
+.name-hot{
+  background:none !important;
+  background-image:linear-gradient(100deg,#FF7A45 0%,#FF3B24 60%,#D62A14 100%) !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;color:transparent !important;
+}
+
+/* buttons: dark red-black, bold light text, red-orange edge + glow (not solid red) */
+.btn.btn-primary,.proj-actions .btn,.proj-actions a.btn,.project .proj-actions .btn.small,#contact .btn.btn-primary,.back-to-top{
+  background:linear-gradient(135deg,#2a0f0b 0%,#4a150d 100%) !important;
+  color:#f8ece8 !important;font-weight:800 !important;
+  border:1.5px solid #FF3B24 !important;
+  box-shadow:0 0 0 1px rgba(255,59,36,.15),0 8px 26px rgba(255,59,36,.28) !important;
+}
+.btn.btn-primary:hover,.proj-actions .btn:hover,.proj-actions a.btn:hover,.project .proj-actions .btn.small:hover,.back-to-top:hover{
+  background:linear-gradient(135deg,#5a1a10 0%,#8a2314 100%) !important;color:#fff3ef !important;
+  border-color:#FF5A45 !important;box-shadow:0 12px 34px rgba(255,59,36,.45) !important;
+}
+.btn.ghost,.nav nav a.btn.small,.nav nav a[href="#contact"].btn{
+  background:rgba(255,59,36,.06) !important;color:#f1e7e4 !important;border:1.5px solid rgba(255,59,36,.55) !important;
+}
+.nav nav a.btn,.nav nav a.btn:hover{color:#f1e7e4 !important}
+.btn.ghost:hover,.nav nav a.btn.small:hover{background:rgba(255,59,36,.22) !important;color:#fff3ef !important;border-color:#FF3B24 !important}
+.socials a.social-btn{
+  background:linear-gradient(135deg,#1d0e0b,#2a110c) !important;color:#f1e7e4 !important;
+  border:1.5px solid rgba(255,59,36,.45) !important;
+}
+.socials a.social-btn:hover{
+  background:linear-gradient(135deg,#5a1a10,#8a2314) !important;color:#fff3ef !important;border-color:#FF3B24 !important;
+  box-shadow:0 8px 22px rgba(255,59,36,.35) !important;
+}
+.card .plain li a[href^="http"]{color:#f1e7e4 !important}
+footer .back-to-top-link{color:#f1e7e4 !important}
+footer{background:linear-gradient(180deg,transparent,rgba(255,59,36,.07))}
+#intro-splash{background:radial-gradient(900px 600px at 50% 40%,rgba(255,59,36,.22),#0a0606 70%) !important}
+.photo-aura{opacity:.7}
+.photo-frame{border-color:rgba(255,59,36,.4) !important;background:#140a08 !important;box-shadow:0 18px 50px rgba(255,59,36,.18) !important}
+.photo-frame::before,.photo-frame::after{border-color:rgba(255,59,36,.25) !important}
+.orbit-ring.r1,.orbit-ring.r2,.orbit-ring.r3{opacity:.6}
+.finale::before{background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(255,59,36,.22),transparent 70%) !important}
