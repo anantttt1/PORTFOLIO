@@ -1,4 +1,4 @@
-/* Intro splash — black + name, then open portfolio */
+/* Intro splash — only name on black, auto-enter ~1.8s */
 (function () {
   const splash = document.getElementById('intro-splash');
   if (!splash) return;
@@ -13,7 +13,7 @@
     done = true;
     splash.classList.add('is-done');
     root.classList.remove('intro-lock');
-    setTimeout(() => { try { splash.remove(); } catch (e) {} }, 900);
+    setTimeout(() => { try { splash.remove(); } catch (e) {} }, 700);
   }
 
   if (calm) {
@@ -21,8 +21,7 @@
     return;
   }
 
-  // Auto open after name settles
-  const t = setTimeout(finish, 3200);
+  const t = setTimeout(finish, 1800);
   splash.addEventListener('click', () => { clearTimeout(t); finish(); });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
