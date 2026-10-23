@@ -1,10 +1,10 @@
-/* Intro splash — bold display name + punch line */
+/* Intro — pure black, only ANANT GOYAL, then auto enter */
 #intro-splash{
   position:fixed;inset:0;z-index:9999;
   display:flex;align-items:center;justify-content:center;
   background:#000;
   cursor:pointer;
-  transition:opacity .85s ease,visibility .85s ease;
+  transition:opacity .65s ease,visibility .65s ease;
   overflow:hidden;
 }
 #intro-splash.is-done{
@@ -16,17 +16,16 @@
   user-select:none;
   z-index:1;
 }
-/* Soft ghost outline behind name — like reference */
 #intro-splash .intro-inner::before{
   content:"ANANT GOYAL";
-  position:absolute;left:50%;top:42%;
+  position:absolute;left:50%;top:50%;
   transform:translate(-50%,-50%);
   font-family:"Bebas Neue",Impact,sans-serif;
   font-size:clamp(4rem,22vw,14rem);
   line-height:0.9;
   letter-spacing:.02em;
   color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.08);
+  -webkit-text-stroke:1px rgba(255,255,255,.06);
   white-space:nowrap;
   pointer-events:none;
   z-index:0;
@@ -35,61 +34,25 @@
   position:relative;z-index:1;
   font-family:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
   font-weight:400;
-  font-size:clamp(3.4rem,16vw,8.5rem);
-  line-height:.9;
+  font-size:clamp(3.8rem,18vw,9.5rem);
+  line-height:.88;
   letter-spacing:.04em;
   text-transform:uppercase;
   color:#f5f5f0;
   margin:0;
   opacity:0;
-  transform:translateY(22px) scale(.97);
-  animation:introNameIn 1.05s cubic-bezier(.22,1,.36,1) .2s forwards;
+  transform:translateY(18px) scale(.98);
+  animation:introNameIn .85s cubic-bezier(.22,1,.36,1) .12s forwards;
 }
-#intro-splash .intro-line{
-  width:0;height:2px;margin:20px auto 0;
-  background:linear-gradient(90deg,transparent,#e6e6e6,transparent);
-  animation:introLine 0.85s ease .8s forwards;
-}
-#intro-splash .intro-punch{
-  position:relative;z-index:1;
-  margin:22px auto 0;
-  max-width:22em;
-  font-family:Sora,"Plus Jakarta Sans",system-ui,sans-serif;
-  font-weight:700;
-  font-size:clamp(0.95rem,2.8vw,1.35rem);
-  line-height:1.35;
-  letter-spacing:.02em;
-  color:#e6e6e6;
-  opacity:0;
-  transform:translateY(10px);
-  animation:introFadeUp .7s ease 1.15s forwards;
-}
+#intro-splash .intro-line,
+#intro-splash .intro-punch,
 #intro-splash .intro-hint{
-  margin-top:28px;
-  font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif;
-  font-size:.72rem;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.32);
-  opacity:0;
-  animation:introFade .55s ease 1.55s forwards;
+  display:none !important;
 }
 @keyframes introNameIn{
   to{opacity:1;transform:translateY(0) scale(1)}
 }
-@keyframes introLine{
-  to{width:min(200px,42vw)}
-}
-@keyframes introFade{
-  to{opacity:1}
-}
-@keyframes introFadeUp{
-  to{opacity:1;transform:translateY(0)}
-}
 html.intro-lock,html.intro-lock body{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
-  #intro-splash .intro-name,
-  #intro-splash .intro-line,
-  #intro-splash .intro-punch,
-  #intro-splash .intro-hint{animation:none;opacity:1;transform:none;width:min(200px,42vw)}
+  #intro-splash .intro-name{animation:none;opacity:1;transform:none}
 }
