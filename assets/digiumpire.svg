@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <defs>
+    <linearGradient id="dbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#14100f"/><stop offset="100%" stop-color="#000000"/></linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#dbg)"/>
+  <polygon points="300,540 420,250 540,250 660,540" fill="#1a1412"/>
+  <line x1="420" y1="250" x2="300" y2="540" stroke="#3a2a25" stroke-width="2"/>
+  <line x1="540" y1="250" x2="660" y2="540" stroke="#3a2a25" stroke-width="2"/>
+  <line x1="372" y1="380" x2="588" y2="380" stroke="#FF3B24" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="446" y1="250" x2="514" y2="250" stroke="#FF3B24" stroke-width="4"/>
+  <rect x="470" y="232" width="4" height="20" fill="#e8e0dc"/><rect x="478" y="232" width="4" height="20" fill="#e8e0dc"/><rect x="486" y="232" width="4" height="20" fill="#e8e0dc"/>
+  <circle cx="560" cy="330" r="9" fill="#FF3B24"/>
+  <path d="M560 330 Q 520 300 482 262" stroke="#FF3B24" stroke-width="2" fill="none" stroke-dasharray="4 6" opacity=".7"/>
+  <rect x="40" y="36" width="380" height="150" rx="16" fill="#000000" stroke="#3a2a25" stroke-width="2"/>
+  <text x="64" y="68" font-family="system-ui,sans-serif" font-size="14" fill="#a89a94" letter-spacing="2">LIVE SCORE</text>
+  <text x="64" y="132" font-family="system-ui,sans-serif" font-size="64" font-weight="800" fill="#FF3B24">148/3</text>
+  <text x="270" y="132" font-family="system-ui,sans-serif" font-size="26" font-weight="700" fill="#e8e0dc">16.2</text>
+  <text x="64" y="166" font-family="system-ui,sans-serif" font-size="15" fill="#a89a94">CRR 9.06  ·  Partnership 54(31)</text>
+  <rect x="560" y="50" width="360" height="130" rx="16" fill="#000000" stroke="#FF3B24" stroke-width="2"/>
+  <text x="586" y="96" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#FF3B24">DIGI</text>
+  <text x="660" y="96" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#e8e0dc">UMPIRE</text>
+  <text x="586" y="130" font-family="system-ui,sans-serif" font-size="15" fill="#a89a94">Cricket scoring · Wide line · Speed</text>
+  <g font-family="system-ui,sans-serif" font-size="16" font-weight="700" text-anchor="middle">
+    <circle cx="70" cy="500" r="18" fill="#1a1412" stroke="#3a2a25"/><text x="70" y="506" fill="#e8e0dc">1</text>
+    <circle cx="116" cy="500" r="18" fill="#1a1412" stroke="#3a2a25"/><text x="116" y="506" fill="#e8e0dc">4</text>
+    <circle cx="162" cy="500" r="18" fill="#FF3B24"/><text x="162" y="506" fill="#000">W</text>
+    <circle cx="208" cy="500" r="18" fill="#1a1412" stroke="#3a2a25"/><text x="208" y="506" fill="#e8e0dc">0</text>
+    <circle cx="254" cy="500" r="18" fill="#1a1412" stroke="#3a2a25"/><text x="254" y="506" fill="#e8e0dc">6</text>
+  </g>
+</svg>
