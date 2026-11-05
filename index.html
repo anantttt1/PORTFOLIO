@@ -7,7 +7,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Anant Goyal Portfolio | B.Tech CSE · Full-Stack & Computer Vision</title>
 <link rel="canonical" href="https://anantgoyalportfolio.vercel.app/">
-<meta name="description" content="Anant Goyal portfolio — B.Tech CSE student at GLA University. Full-stack, computer vision and data projects: Gesture Box, Gesture Canvas, Endless Runner, Sales Dashboard. Resume, LeetCode and contact.">
+<meta name="description" content="Anant Goyal portfolio — B.Tech CSE student at GLA University. Full-stack, computer vision and data projects: Gesture Box, Gesture Canvas, Endless Runner, Sales Dashboard, Skill Tracker, DigiUmpire. Resume, LeetCode and contact.">
 <meta name="keywords" content="Anant Goyal, Anant Goyal portfolio, Anant Goyal GLA, portfolio, full-stack developer, computer vision, MediaPipe, B.Tech CSE Mathura">
 <meta name="author" content="Anant Goyal">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -242,6 +242,19 @@
         <a class="btn small" href="https://github.com/anantttt1/DigiUmpire" target="_blank" rel="noopener noreferrer">Code</a>
       </div>
     </article>
+    <article class="card project">
+      <a class="proj-thumb" href="https://yourskilltracker.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Skill Tracker demo">
+        <img src="assets/skill-tracker.svg" alt="Skill Tracker preview" width="960" height="540" loading="lazy" />
+      </a>
+      <div class="row"><h3>Skill Tracker</h3><span class="muted">November 2026 - Present</span></div>
+      <p class="muted">Frontend Developer</p>
+      <p>A personal skill development dashboard to track skills, coding practice, study sessions, goals and projects — with analytics charts, a study timer and local data persistence.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Chart.js</span></div>
+      <div class="proj-actions">
+        <a class="btn small" href="https://yourskilltracker.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+        <a class="btn small" href="https://github.com/anantttt1/Skill-Tracker" target="_blank" rel="noopener noreferrer">Code</a>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -306,7 +319,7 @@
     <div class="card">
       <h3>Achievements</h3>
       <ul class="plain">
-        <li><strong>250+</strong> problems solved & 100+ active days on <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">LeetCode</a></li>
+        <li><strong>200+</strong> problems solved & 100+ active days on <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">LeetCode</a></li>
         <li><strong>800+</strong> contributions on <a href="https://github.com/anantttt1" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       </ul>
     </div>
@@ -325,7 +338,7 @@
 
 <section id="contact" class="reveal">
   <h2>Get in touch</h2>
-  <div>
+  <div class="grid two">
     <div>
       <p>Have an opportunity, a project idea or just want to say hi? Send a message and I'll get back to you.</p>
       <ul class="plain contact">
@@ -339,6 +352,13 @@
       </div>
       <a href="assets/Anant-Goyal-Resume.pdf" download class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>Download Resume</a>
     </div>
+    <form id="contact-form" class="card" novalidate>
+      <label>Name<input name="name" required autocomplete="name" maxlength="80"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email" maxlength="120"></label>
+      <label>Message<textarea name="message" rows="5" required maxlength="2000"></textarea></label>
+      <button class="btn" type="submit">Send message</button>
+      <p id="form-note" class="muted" role="status"></p>
+    </form>
   </div>
 </section>
 
