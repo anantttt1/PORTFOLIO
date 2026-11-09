@@ -248,3 +248,11 @@ footer .back-to-top-link:hover{border-bottom-color:#FF3B24;color:#FF3B24 !import
 
 section,footer{background:none !important}
 #intro-splash{background:#000 !important}
+
+/* Bullet points for the Certifications list */
+.plain.bullets{list-style:none;padding-left:0}
+.plain.bullets li{position:relative;padding-left:22px}
+.plain.bullets li::before{
+  content:"";position:absolute;left:4px;top:.62em;
+  width:7px;height:7px;border-radius:50%;background:#FF3B24;
+}
