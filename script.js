@@ -247,6 +247,8 @@ if ('IntersectionObserver' in window) {
       $('lc-' + k).textContent = String(s[k]);
       $('lc-' + k + '-bar').style.width = Math.round((s[k] / s.total) * 100) + '%';
     });
+    if ($('lc-pod-streak')) $('lc-pod-streak').textContent = String(s.streak || 0);
+    if ($('lc-streak')) $('lc-streak').textContent = String(s.streak || 0);
     $('lc-note').textContent = noteText;
     shown = true;
     if (s.submissionCalendar && Object.keys(s.submissionCalendar).length) {

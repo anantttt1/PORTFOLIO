@@ -2,6 +2,7 @@
 const USER = 'Anant_goyal2907';
 const ALLOWED_ORIGINS = new Set([
   'https://anantportfolio-eight.vercel.app',
+  'https://anantgoyalportfolio.vercel.app',
   'http://localhost:3000',
   'http://127.0.0.1:3000'
 ]);
