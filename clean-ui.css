@@ -287,7 +287,10 @@ section,footer{background:none !important}
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding-top: 120px !important;
+  padding-top: 160px !important;
+  padding-bottom: 48px !important;
+  justify-content: flex-start !important;
+  min-height: 100vh;
 }
 .hero-layout {
   min-width: 0 !important;
@@ -316,6 +319,6 @@ section,footer{background:none !important}
     grid-template-columns: 1fr !important;
   }
   #home.hero {
-    padding-top: 100px !important;
+    padding-top: 110px !important;
   }
 }
