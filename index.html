@@ -33,11 +33,11 @@
 <meta name="twitter:image" content="https://anantgoyalportfolio.vercel.app/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1794663774">
-<link rel="stylesheet" href="photo-stage.css?v=1794663774">
-<link rel="stylesheet" href="scroll-3d.css?v=1794663774">
-<link rel="stylesheet" href="clean-ui.css?v=1794663774">
-<link rel="stylesheet" href="intro.css?v=1794663774">
+<link rel="stylesheet" href="style.css?v=1794664500">
+<link rel="stylesheet" href="photo-stage.css?v=1794664500">
+<link rel="stylesheet" href="scroll-3d.css?v=1794664500">
+<link rel="stylesheet" href="clean-ui.css?v=1794664500">
+<link rel="stylesheet" href="intro.css?v=1794664500">
 <script>document.documentElement.setAttribute('data-theme','dark');</script>
 
 <script type="application/ld+json">
@@ -262,90 +262,79 @@
 
 <section id="skills" class="reveal">
   <h2>Skills</h2>
-  <div class="grid two">
+  <div class="grid three">
     <div class="card">
-      <h3>Technical</h3>
-      <div class="tags"><span>Python</span><span>Java</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>SQL</span><span>Excel</span><span>Git</span><span>MediaPipe</span><span>Chart.js</span></div>
+      <h3>Full-Stack</h3>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>MongoDB</span><span>MySQL</span></div>
+    </div>
+    <div class="card">
+      <h3>Languages</h3>
+      <div class="tags"><span>Java</span><span>Python</span><span>C</span></div>
+    </div>
+    <div class="card">
+      <h3>Core CS</h3>
+      <div class="tags"><span>SQL</span><span>DSA</span><span>OS</span><span>CN</span></div>
+    </div>
+    <div class="card">
+      <h3>Tools</h3>
+      <div class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>Docker</span></div>
     </div>
     <div class="card">
       <h3>Soft skills</h3>
-      <div class="tags"><span>Problem solving</span><span>Communication</span><span>Teamwork</span><span>Time management</span><span>Leadership</span></div>
+      <div class="tags"><span>Problem solving</span><span>Time management</span><span>Leadership</span></div>
     </div>
   </div>
 </section>
 
 <section id="achievements" class="reveal">
   <h2>Achievements & Certifications</h2>
-  <div class="card lc" id="lc-card">
-    <div class="row"><h3>LeetCode stats</h3><a class="muted" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">@Anant_goyal2907</a></div>
-    <div class="lc-skeleton" id="lc-skeleton" aria-hidden="true">
-      <div class="lc-skel-body">
-        <div class="skel skel-total"></div>
-        <div class="skel-bars">
-          <div class="skel skel-row"></div>
-          <div class="skel skel-row"></div>
-          <div class="skel skel-row"></div>
-        </div>
+  <div class="card lc">
+    <div class="lc-left">
+      <div>
+        <h3>LeetCode stats</h3>
+        <p class="muted">@Anant_goyal2907</p>
       </div>
-      <div class="skel skel-heatmap"></div>
-      <div class="skel skel-note"></div>
-    </div>
-    <div class="lc-content" id="lc-content" hidden>
-      <div class="lc-body">
-        <div class="lc-left">
-          <div class="lc-total"><strong id="lc-total">0</strong><span>problems solved</span></div>
-          <div class="lc-pod-streak" title="Current LeetCode activity streak">
-            <span class="lc-pod-fire" aria-hidden="true">🔥</span>
-            <strong id="lc-pod-streak">0</strong>
-            <span>day streak</span>
-          </div>
-        </div>
-        <div class="lc-bars" id="lc-bars">
-          <div class="lc-row easy"><span>Easy</span><div class="bar"><i id="lc-easy-bar"></i></div><b id="lc-easy">0</b></div>
-          <div class="lc-row medium"><span>Medium</span><div class="bar"><i id="lc-medium-bar"></i></div><b id="lc-medium">0</b></div>
-          <div class="lc-row hard"><span>Hard</span><div class="bar"><i id="lc-hard-bar"></i></div><b id="lc-hard">0</b></div>
-        </div>
-      </div>
-      <div class="lc-heatmap-wrap" id="lc-heatmap-wrap" hidden>
-        <div class="lc-heatmap-meta">
-          <span id="lc-submissions">0</span> submissions in the past one year
-          <span class="lc-heatmap-stats">
-            Total active days: <strong id="lc-active-days">0</strong>
-            &nbsp;&middot;&nbsp;
-            Current streak: <strong id="lc-streak">0</strong>
-          </span>
-        </div>
-        <div class="lc-heatmap-scroll">
-          <div class="lc-heatmap" id="lc-heatmap" role="img" aria-label="LeetCode submission activity over the past year"></div>
-        </div>
-        <div class="lc-heatmap-legend">
-          <span>Less</span>
-          <i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i>
-          <span>More</span>
-        </div>
+      <div class="lc-pod-streak" id="lc-pod-streak">
+        <span class="lc-pod-fire">🔥</span>
+        <strong id="lc-streak-num">—</strong>
+        <span>day streak</span>
       </div>
     </div>
-    <p class="muted" id="lc-note" role="status">Loading live stats...</p>
+    <div class="lc-body">
+      <div class="lc-total"><strong id="lc-total">—</strong><span>problems solved</span></div>
+      <div class="lc-bars">
+        <div class="lc-row easy"><span>Easy</span><div class="bar"><i id="lc-easy"></i></div><b id="lc-easy-n">—</b></div>
+        <div class="lc-row medium"><span>Medium</span><div class="bar"><i id="lc-medium"></i></div><b id="lc-medium-n">—</b></div>
+        <div class="lc-row hard"><span>Hard</span><div class="bar"><i id="lc-hard"></i></div><b id="lc-hard-n">—</b></div>
+      </div>
+    </div>
+    <div class="lc-heatmap-wrap">
+      <div class="lc-heatmap-meta">
+        <span><strong id="lc-year-subs">—</strong> submissions in the past one year</span>
+        <span class="lc-heatmap-stats">Total active days: <strong id="lc-active-days">—</strong> · Max streak: <strong id="lc-max-streak">—</strong></span>
+      </div>
+      <div class="lc-heatmap-scroll">
+        <div class="lc-heatmap-months" id="lc-months"></div>
+        <div class="lc-heatmap" id="lc-heatmap"></div>
+      </div>
+      <div class="lc-heatmap-legend"><span>Less</span><i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i><span>More</span></div>
+    </div>
+    <p id="lc-note" class="muted">Live from LeetCode, refreshes every minute</p>
   </div>
-  <div class="grid two">
+  <div class="grid two" style="margin-top:20px">
     <div class="card">
       <h3>Achievements</h3>
-      <ul class="plain bullets">
-        <li><strong>250+</strong> problems solved & 100+ active days on <a href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">LeetCode</a></li>
-        <li><strong>1300+</strong> contributions on <a href="https://github.com/anantttt1" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      <ul class="plain">
+        <li><strong>250+</strong> problems solved & 100+ active days on LeetCode</li>
+        <li><strong>1300+</strong> GitHub contributions</li>
       </ul>
     </div>
     <div class="card">
       <h3>Certifications</h3>
       <ul class="plain bullets">
-        <li>NPTEL (IIT Kharagpur) — Ethics in Engineering Practice · Elite 90%</li>
-        <li><a href="https://unstop.com/certificate-preview/0efef7aa-6853-45be-8248-a669d513c8fa" target="_blank" rel="noopener noreferrer">Tech Quiz 2.0 — Tech Circle Community (Unstop)</a></li>
-        <li><a href="https://www.hackerrank.com/certificates/ad07fe759f06" target="_blank" rel="noopener noreferrer">SQL (Basic) - HackerRank</a></li>
-        <li><a href="https://rankupskills.in/verify?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">AI Rankup Certification</a> (Certificate ID - RNK-AQ-26-020)</li>
-        <li>BuildCamp - AI Scalability & Google Antigravity</li>
-        <li>AI for Beginners - HP LIFE</li>
-        <li>Google Student Ambassador Program: Build Your Fest</li>
-        <li>SkillQuest - Generative AI Literacy</li>
+        <li>NPTEL Elite (90%)</li>
+        <li>Tech Quiz 2.0</li>
+        <li>AI Rankup ID RNK-AQ-26-020</li>
       </ul>
     </div>
   </div>
@@ -353,45 +342,37 @@
 
 <section id="contact" class="reveal">
   <h2>Get in touch</h2>
-  <p class="muted">Open to internships, collaborations and interesting projects.</p>
-  <ul class="plain contact">
-    <li><a href="mailto:anantgoyal1001@gmail.com">anantgoyal1001@gmail.com</a></li>
-    <li><a href="https://github.com/anantttt1" target="_blank" rel="noopener noreferrer">github.com/anantttt1</a></li>
-    <li><a href="https://www.linkedin.com/in/anant-goyal-417b81372" target="_blank" rel="noopener noreferrer">linkedin.com/in/anant-goyal-417b81372</a></li>
-  </ul>
-  <div class="contact-socials socials">
-    <a class="social-btn" href="https://github.com/anantttt1" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a class="social-btn" href="https://www.linkedin.com/in/anant-goyal-417b81372" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a class="social-btn" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">LeetCode</a>
-  </div>
-  <form id="contact-form" class="card" novalidate>
-    <label>Name<input name="name" type="text" required maxlength="80" autocomplete="name"></label>
-    <label>Email<input name="email" type="email" required maxlength="120" autocomplete="email"></label>
-    <label>Message<textarea name="message" rows="5" required maxlength="2000"></textarea></label>
-    <button type="submit" class="btn btn-primary">Send message</button>
-    <p class="muted" id="form-note" role="status"></p>
-  </form>
-</section>
-
-<section class="finale reveal">
-  <p class="finale-eyebrow">Thanks for stopping by</p>
-  <h2 class="finale-title">LET'S BUILD<br><span class="name-hot">SOMETHING</span></h2>
-  <p class="finale-sub">Always learning. Always building. Always improving.</p>
-  <div class="finale-cta">
-    <a href="assets/Anant-Goyal-Resume.pdf" download class="btn btn-primary">Download Resume</a>
-    <a href="#contact" class="btn ghost">Get in touch</a>
+  <div class="grid two">
+    <div>
+      <ul class="plain contact">
+        <li><a href="mailto:anantgoyal1001@gmail.com">anantgoyal1001@gmail.com</a></li>
+        <li>Mathura, India</li>
+      </ul>
+      <div class="contact-socials socials">
+        <a class="social-btn" href="https://github.com/anantttt1" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="social-btn" href="https://www.linkedin.com/in/anant-goyal-417b81372" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="social-btn" href="https://leetcode.com/u/Anant_goyal2907/" target="_blank" rel="noopener noreferrer">LeetCode</a>
+      </div>
+    </div>
+    <form action="mailto:anantgoyal1001@gmail.com" method="get" enctype="text/plain">
+      <label>Name <input type="text" name="name" required></label>
+      <label>Email <input type="email" name="email" required></label>
+      <label>Message <textarea name="body" rows="4" required></textarea></label>
+      <button type="submit" class="btn btn-primary">Send message</button>
+      <p id="form-note" class="muted">Opens your email app with the message ready.</p>
+    </form>
   </div>
 </section>
 </main>
 
 <footer>
-  <span>&copy; <span id="year"></span> Anant Goyal</span>
-  <a href="#home" class="back-to-top-link" id="back-to-top-link">Back to top</a>
+  <p>© 2026 Anant Goyal</p>
+  <a href="#home" class="back-to-top-link">Back to top</a>
 </footer>
-<a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+<a href="#home" class="back-to-top" aria-label="Back to top">↑</a>
 
-<script src="intro.js?v=1794663774"></script>
-<script src="script.js?v=1794663774"></script>
-<script src="scroll-3d.js?v=1794663774"></script>
+<script src="intro.js?v=1794664500"></script>
+<script src="script.js?v=1794664500"></script>
+<script src="scroll-3d.js?v=1794664500"></script>
 </body>
 </html>
