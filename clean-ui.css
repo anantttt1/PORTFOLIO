@@ -280,14 +280,14 @@ section,footer{background:none !important}
 }
 
 
-/* Fix hero overflow + clear fixed nav from top */
+/* Fix hero: clear fixed nav — margin on layout works; padding alone was ignored by layout */
 #home.hero {
   overflow-x: clip;
   overflow-y: visible;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding-top: 160px !important;
+  padding-top: 0 !important;
   padding-bottom: 48px !important;
   justify-content: flex-start !important;
   min-height: 100vh;
@@ -298,6 +298,7 @@ section,footer{background:none !important}
   max-width: 100% !important;
   box-sizing: border-box !important;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
+  margin-top: 100px !important;
 }
 .hero-copy {
   min-width: 0 !important;
@@ -317,8 +318,6 @@ section,footer{background:none !important}
 @media (max-width: 760px) {
   .hero-layout {
     grid-template-columns: 1fr !important;
-  }
-  #home.hero {
-    padding-top: 110px !important;
+    margin-top: 90px !important;
   }
 }
