@@ -191,8 +191,8 @@ footer .back-to-top-link:hover{border-bottom-color:#FF3B24;color:#FF3B24 !import
 }
 .hero-mega{
   font-family:"Bebas Neue",Impact,"Arial Narrow",sans-serif !important;
-  font-weight:400 !important;font-size:clamp(2.8rem,11vw,6.2rem) !important;
-  line-height:.88 !important;letter-spacing:.03em !important;text-transform:uppercase;
+  font-weight:400 !important;font-size:clamp(2.6rem,9vw,5.4rem) !important;
+  line-height:.88 !important;letter-spacing:.01em !important;text-transform:uppercase;
   color:#ececec !important;margin:0 0 16px !important;text-shadow:none !important;
   max-width:100%;
 }
@@ -216,7 +216,7 @@ footer .back-to-top-link:hover{border-bottom-color:#FF3B24;color:#FF3B24 !import
 }
 .hero-copy > *{position:relative;z-index:1}
 @media (max-width:760px){
-  .hero-mega{font-size:clamp(2.8rem,16vw,4.8rem)!important}
+  .hero-mega{font-size:clamp(2.6rem,14vw,4.4rem)!important}
   .hero-copy::before{opacity:.5;top:4%}
 }
 
@@ -280,7 +280,40 @@ section,footer{background:none !important}
 }
 
 
-/* Keep hero name inside the column */
-.hero-layout{min-width:0;width:100%;max-width:100%}
-.hero-copy{min-width:0;max-width:100%}
-.hero-mega .mega-line{max-width:100%}
+/* Hero name — keep fully inside viewport */
+#home.hero {
+  padding-left: 4px;
+  padding-right: 4px;
+  box-sizing: border-box;
+}
+.hero-layout {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
+}
+.hero-copy {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  padding-left: 4px;
+  padding-right: 8px;
+}
+.hero-mega {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  letter-spacing: 0.01em !important;
+}
+.hero-copy::before {
+  left: 0 !important;
+  max-width: 100%;
+}
+@media (max-width: 760px) {
+  .hero-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-copy {
+    padding-right: 0;
+  }
+}
