@@ -280,12 +280,14 @@ section,footer{background:none !important}
 }
 
 
-/* Fix hero overflow: layout was wider than viewport (100vw bleed) */
+/* Fix hero overflow + clear fixed nav from top */
 #home.hero {
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  padding-top: 120px !important;
 }
 .hero-layout {
   min-width: 0 !important;
@@ -312,5 +314,8 @@ section,footer{background:none !important}
 @media (max-width: 760px) {
   .hero-layout {
     grid-template-columns: 1fr !important;
+  }
+  #home.hero {
+    padding-top: 100px !important;
   }
 }
