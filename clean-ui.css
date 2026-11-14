@@ -280,10 +280,11 @@ section,footer{background:none !important}
 }
 
 
-/* Hero name — keep fully inside viewport */
+/* Fix hero overflow: layout was wider than viewport (100vw bleed) */
 #home.hero {
-  padding-left: 4px;
-  padding-right: 4px;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
 }
 .hero-layout {
@@ -297,23 +298,19 @@ section,footer{background:none !important}
   min-width: 0 !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
-  padding-left: 4px;
-  padding-right: 8px;
 }
 .hero-mega {
   max-width: 100% !important;
   box-sizing: border-box !important;
-  letter-spacing: 0.01em !important;
 }
-.hero-copy::before {
+/* Stop 100vw from expanding page width past scrollbar */
+.scene {
   left: 0 !important;
-  max-width: 100%;
+  width: 100% !important;
+  margin-left: 0 !important;
 }
 @media (max-width: 760px) {
   .hero-layout {
     grid-template-columns: 1fr !important;
-  }
-  .hero-copy {
-    padding-right: 0;
   }
 }
